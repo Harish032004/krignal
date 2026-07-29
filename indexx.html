@@ -1,0 +1,1565 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Krignal — India’s Global Business Signal</title>
+<meta name="description" content="Krignal is a curated business signal connecting people, stories, rooms and opportunities across India and the world.">
+<meta name="theme-color" content="#050505">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --k-black:#050505;
+  --k-black-2:#0d0d0d;
+  --k-black-3:#151515;
+  --k-white:#f5f3ec;
+  --k-yellow:#ffd21f;
+  --k-yellow-soft:#ffe36b;
+  --k-grey:#9b9a94;
+  --k-line:rgba(245,243,236,.15);
+  --serif:"Instrument Serif",Georgia,serif;
+  --sans:"Manrope",system-ui,sans-serif;
+  --mono:"Space Mono",monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--k-black);
+  color:var(--k-white);
+  font-family:var(--sans);
+  overflow-x:hidden;
+  cursor:none;
+}
+img{display:block;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.08)}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+::selection{background:var(--k-yellow);color:var(--k-black)}
+.container{width:min(1280px,calc(100% - 56px));margin-inline:auto}
+.mono{font-family:var(--mono);font-size:10px;line-height:1.4;letter-spacing:.14em;text-transform:uppercase}
+.serif{font-family:var(--serif);font-weight:400;letter-spacing:-.035em}
+.yellow{color:var(--k-yellow)}
+.muted{color:var(--k-grey)}
+.line{height:1px;background:var(--k-line)}
+.section{position:relative;padding:140px 0}
+.reveal{
+  opacity:0;
+  transform:translateY(55px);
+  clip-path:inset(0 0 18% 0);
+  transition:
+    opacity .9s cubic-bezier(.18,.72,.14,1),
+    transform .9s cubic-bezier(.18,.72,.14,1),
+    clip-path .9s cubic-bezier(.18,.72,.14,1);
+}
+.reveal.in{opacity:1;transform:none;clip-path:inset(0 0 0 0)}
+.reveal[data-delay="1"]{transition-delay:.12s}
+.reveal[data-delay="2"]{transition-delay:.24s}
+.reveal[data-delay="3"]{transition-delay:.36s}
+.section-tag{
+  display:flex;align-items:center;gap:15px;
+  color:var(--k-yellow);
+  margin-bottom:30px;
+}
+.section-tag::before{content:"";width:42px;height:1px;background:var(--k-yellow)}
+.section-title{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:clamp(60px,8vw,120px);
+  line-height:.9;
+  letter-spacing:-.045em;
+}
+.section-copy{
+  max-width:650px;
+  font-size:18px;
+  line-height:1.75;
+  color:var(--k-grey);
+}
+
+/* cursor */
+.cursor-dot,.cursor-ring{
+  position:fixed;left:0;top:0;pointer-events:none;z-index:9999;border-radius:50%;
+  transform:translate(-50%,-50%);
+}
+.cursor-dot{width:7px;height:7px;background:var(--k-yellow)}
+.cursor-ring{width:34px;height:34px;border:1px solid rgba(255,210,31,.6);transition:width .25s,height .25s,background .25s}
+body.cursor-hover .cursor-ring{width:58px;height:58px;background:rgba(255,210,31,.12)}
+
+/* fixed rail */
+.rail{
+  position:fixed;
+  inset:0 auto 0 0;
+  width:82px;
+  z-index:200;
+  background:rgba(5,5,5,.86);
+  backdrop-filter:blur(16px);
+  border-right:1px solid var(--k-line);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:space-between;
+  padding:20px 0;
+}
+.rail-logo{
+  width:44px;height:44px;border-radius:50%;
+  display:grid;place-items:center;
+  color:var(--k-black);background:var(--k-yellow);
+  font-family:var(--serif);font-size:29px;
+}
+.rail-nav{display:flex;flex-direction:column;align-items:center;gap:24px}
+.rail-nav a{
+  writing-mode:vertical-rl;
+  transform:rotate(180deg);
+  font-family:var(--mono);
+  font-size:9px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:#b7b6af;
+  transition:.25s;
+}
+.rail-nav a:hover{color:var(--k-yellow)}
+.rail-index{font-family:var(--mono);font-size:9px;color:var(--k-grey);writing-mode:vertical-rl}
+.page{margin-left:82px}
+.mobile-nav{display:none}
+
+/* HERO — radial signal portal */
+.hero{
+  min-height:100vh;
+  position:relative;
+  display:flex;
+  align-items:center;
+  overflow:hidden;
+  isolation:isolate;
+  background:
+    radial-gradient(circle at 73% 48%,rgba(255,210,31,.11),transparent 24%),
+    linear-gradient(135deg,#050505 0%,#0b0b0b 100%);
+}
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+  background-size:74px 74px;
+  mask-image:linear-gradient(90deg,#000,transparent 72%);
+  z-index:-2;
+}
+.hero-word{
+  position:absolute;
+  left:2vw;
+  bottom:-5.6vw;
+  font-family:var(--serif);
+  font-size:26vw;
+  line-height:.8;
+  color:transparent;
+  -webkit-text-stroke:1px rgba(255,255,255,.05);
+  white-space:nowrap;
+  z-index:-1;
+}
+.hero-grid{
+  width:100%;
+  min-height:100vh;
+  display:grid;
+  grid-template-columns:.86fr 1.14fr;
+  align-items:center;
+  gap:50px;
+  padding:78px 0 50px;
+}
+.hero-copy{position:relative;z-index:5}
+.hero-kicker{display:flex;align-items:center;gap:18px;margin-bottom:38px}
+.hero-kicker i{width:80px;height:1px;background:var(--k-yellow)}
+.hero-title{
+  font-family:var(--serif);
+  font-size:clamp(72px,8.6vw,145px);
+  line-height:.82;
+  font-weight:400;
+  letter-spacing:-.055em;
+  max-width:6.5ch;
+}
+.hero-title em{color:var(--k-yellow);font-weight:400}
+.hero-desc{
+  max-width:600px;
+  font-size:19px;
+  line-height:1.7;
+  color:#c1c0b9;
+  margin-top:42px;
+}
+.hero-actions{display:flex;align-items:center;gap:28px;margin-top:44px}
+.hero-cta{
+  display:inline-flex;align-items:center;gap:18px;
+  padding:18px 24px;border-radius:999px;
+  color:var(--k-black);background:var(--k-yellow);
+  font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.12em;
+  transition:.3s;
+}
+.hero-cta:hover{transform:translateY(-4px)}
+.hero-note{font-family:var(--mono);font-size:9px;color:var(--k-grey);line-height:1.6;text-transform:uppercase;letter-spacing:.1em}
+
+/* hero orbital visual */
+.orbit-stage{
+  position:relative;
+  height:min(790px,82vh);
+  min-height:610px;
+}
+.orbit-outer,.orbit-mid,.orbit-inner{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  border-radius:50%;border:1px solid rgba(245,243,236,.18);
+}
+.orbit-outer{width:88%;aspect-ratio:1;animation:spin 34s linear infinite}
+.orbit-mid{width:66%;aspect-ratio:1;border-style:dashed;animation:spinReverse 24s linear infinite}
+.orbit-inner{width:42%;aspect-ratio:1;border-color:rgba(255,210,31,.45)}
+@keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg)}}
+@keyframes spinReverse{to{transform:translate(-50%,-50%) rotate(-360deg)}}
+.portal{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:39%;aspect-ratio:1;border-radius:50%;
+  background:var(--k-yellow);
+  color:var(--k-black);
+  display:grid;place-items:center;
+  box-shadow:0 0 120px rgba(255,210,31,.15);
+}
+.portal::before,.portal::after{
+  content:"";position:absolute;border-radius:50%;border:1px solid rgba(0,0,0,.25)
+}
+.portal::before{inset:11%}.portal::after{inset:24%}
+.portal-k{font-family:var(--serif);font-size:clamp(90px,9vw,160px);z-index:2}
+.orbit-photo{
+  position:absolute;overflow:hidden;border:10px solid var(--k-black);
+  box-shadow:0 20px 60px rgba(0,0,0,.35);
+}
+.photo-a{width:31%;height:40%;left:1%;top:8%;clip-path:polygon(0 0,100% 0,100% 87%,78% 100%,0 100%)}
+.photo-b{width:31%;height:39%;right:2%;bottom:7%;clip-path:polygon(22% 0,100% 0,100% 100%,0 100%,0 15%)}
+.photo-c{width:23%;height:29%;right:5%;top:6%;border-radius:50%}
+.signal-pill{
+  position:absolute;
+  padding:13px 17px;
+  background:var(--k-black-2);
+  border:1px solid var(--k-line);
+  font-family:var(--mono);
+  font-size:9px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  white-space:nowrap;
+}
+.pill-tv{left:2%;bottom:23%}
+.pill-events{right:0;top:42%}
+.pill-ai{left:33%;top:4%}
+.signal-pill b{color:var(--k-yellow);margin-right:7px}
+
+/* signal strip */
+.signal-strip{
+  background:var(--k-yellow);
+  color:var(--k-black);
+  overflow:hidden;
+}
+.signal-track{display:flex;width:max-content;animation:marquee 28s linear infinite}
+.signal-item{
+  padding:19px 34px;
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  white-space:nowrap;
+}
+.signal-item span{margin-left:34px}
+@keyframes marquee{to{transform:translateX(-50%)}}
+
+/* SIGNAL SEQUENCE */
+.sequence{background:var(--k-white);color:var(--k-black)}
+.sequence-grid{display:grid;grid-template-columns:.72fr 1.28fr;gap:70px;align-items:start}
+.sequence-intro{position:sticky;top:90px}
+.sequence-intro .section-copy{color:#56554f;margin-top:35px}
+.sequence-list{display:flex;flex-direction:column}
+.sequence-item{
+  position:relative;
+  min-height:420px;
+  padding:38px 0;
+  border-top:1px solid rgba(0,0,0,.17);
+  display:grid;
+  grid-template-columns:110px 1fr 190px;
+  gap:28px;
+  align-items:center;
+  overflow:hidden;
+}
+.sequence-item:last-child{border-bottom:1px solid rgba(0,0,0,.17)}
+.seq-no{
+  font-family:var(--serif);
+  font-size:88px;
+  line-height:1;
+  color:transparent;
+  -webkit-text-stroke:1px rgba(0,0,0,.34);
+}
+.seq-content h3{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:clamp(58px,6.5vw,96px);
+  line-height:.9;
+  letter-spacing:-.045em;
+}
+.seq-content p{max-width:530px;margin-top:22px;color:#56554f;font-size:16px;line-height:1.7}
+.seq-tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:24px}
+.seq-tags span{
+  border:1px solid rgba(0,0,0,.22);
+  border-radius:999px;
+  padding:9px 12px;
+  font-family:var(--mono);
+  font-size:8px;
+  text-transform:uppercase;
+  letter-spacing:.1em;
+}
+.seq-visual{height:270px;position:relative}
+.seq-image{position:absolute;inset:0;overflow:hidden}
+.seq-yellow{
+  position:absolute;width:84px;height:84px;border-radius:50%;
+  background:var(--k-yellow);right:-14px;bottom:-14px;
+  display:grid;place-items:center;font-family:var(--serif);font-size:42px;color:var(--k-black);
+}
+.sequence-item:nth-child(2) .seq-image{border-radius:50%}
+.sequence-item:nth-child(3) .seq-image{clip-path:polygon(18% 0,100% 0,100% 100%,0 100%,0 20%)}
+
+/* TV — kinetic editorial wall */
+.tv{background:var(--k-black);overflow:hidden}
+.tv-header{
+  display:flex;justify-content:space-between;align-items:flex-end;
+  margin-bottom:65px;
+}
+.tv-header .section-copy{max-width:500px}
+.tv-word{
+  position:absolute;right:-2vw;top:80px;
+  font-family:var(--serif);font-size:31vw;line-height:.7;
+  color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.055);
+  pointer-events:none;
+}
+.tv-wall{
+  display:grid;
+  grid-template-columns:1.25fr .75fr;
+  gap:18px;
+  position:relative;
+  z-index:2;
+}
+.tv-lead{
+  min-height:760px;
+  background:var(--k-white);
+  color:var(--k-black);
+  padding:24px;
+  display:flex;flex-direction:column;
+}
+.tv-lead-image{height:500px;overflow:hidden;position:relative}
+.tv-lead-image::after{
+  content:"PLAY";
+  position:absolute;right:24px;bottom:24px;
+  width:92px;height:92px;border-radius:50%;
+  background:var(--k-yellow);color:var(--k-black);
+  display:grid;place-items:center;
+  font-family:var(--mono);font-size:9px;letter-spacing:.12em;
+}
+.tv-lead-copy{
+  display:grid;grid-template-columns:130px 1fr;gap:25px;
+  padding:30px 8px 5px;
+}
+.tv-lead-copy h3{
+  font-family:var(--serif);
+  font-size:clamp(46px,5vw,78px);
+  font-weight:400;line-height:.92;letter-spacing:-.04em;
+}
+.tv-lead-copy p{margin-top:18px;color:#55534f;line-height:1.65}
+.tv-side{display:grid;grid-template-rows:1fr 1fr 1fr;gap:18px}
+.tv-tile{
+  min-height:240px;
+  border:1px solid var(--k-line);
+  padding:24px;
+  display:grid;grid-template-columns:130px 1fr;gap:22px;
+  align-items:center;
+  transition:.35s;
+  background:var(--k-black-2);
+}
+.tv-tile:hover{background:var(--k-yellow);color:var(--k-black);transform:translateX(-10px)}
+.tv-tile:hover .mono,.tv-tile:hover p{color:#3a3421}
+.tv-tile-image{height:170px;overflow:hidden}
+.tv-tile h4{font-family:var(--serif);font-size:33px;line-height:1;font-weight:400;margin:12px 0}
+.tv-tile p{font-size:13px;color:var(--k-grey);line-height:1.5}
+.tv-categories{
+  display:flex;flex-wrap:wrap;gap:10px;margin-top:34px
+}
+.tv-categories span{
+  border:1px solid var(--k-line);border-radius:999px;
+  padding:12px 15px;font-family:var(--mono);font-size:8px;
+  text-transform:uppercase;letter-spacing:.1em;
+}
+
+/* EVENTS — room ledger */
+.events{background:var(--k-yellow);color:var(--k-black)}
+.events-head{
+  display:grid;grid-template-columns:1fr .8fr;gap:60px;align-items:end;
+  margin-bottom:60px;
+}
+.events-head .section-copy{color:#4b432a}
+.room-ledger{border-top:2px solid var(--k-black)}
+.room-row{
+  position:relative;
+  display:grid;
+  grid-template-columns:120px 1fr 220px 80px;
+  gap:30px;
+  align-items:center;
+  min-height:170px;
+  border-bottom:1px solid rgba(0,0,0,.3);
+  transition:.35s;
+  overflow:hidden;
+}
+.room-row::before{
+  content:"";position:absolute;inset:0;background:var(--k-black);
+  transform:translateY(102%);transition:.4s cubic-bezier(.2,.7,.2,1);
+  z-index:0;
+}
+.room-row:hover::before{transform:none}
+.room-row>*{position:relative;z-index:1}
+.room-row:hover{color:var(--k-white);padding-inline:22px}
+.room-row:hover .room-meta,.room-row:hover .room-type{color:#aaa9a2}
+.room-date{font-family:var(--serif);font-size:72px;line-height:.8}
+.room-date small{display:block;font-family:var(--mono);font-size:8px;letter-spacing:.1em;text-transform:uppercase;margin-top:12px}
+.room-title{font-family:var(--serif);font-size:clamp(34px,4vw,58px);font-weight:400;line-height:.95}
+.room-meta,.room-type{font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.1em;line-height:1.7}
+.room-arrow{
+  width:54px;height:54px;border:1px solid currentColor;border-radius:50%;
+  display:grid;place-items:center;font-size:22px;justify-self:end;
+}
+.event-toggle{display:flex;gap:8px;margin-bottom:35px}
+.event-toggle button{
+  border:1px solid rgba(0,0,0,.35);background:transparent;color:var(--k-black);
+  padding:12px 18px;border-radius:999px;
+  font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.1em;
+  cursor:pointer;
+}
+.event-toggle button.active{background:var(--k-black);color:var(--k-white)}
+.event-panel{display:none}.event-panel.active{display:block}
+.past-wall{display:grid;grid-template-columns:1.2fr .8fr .8fr;gap:14px}
+.past-event{background:var(--k-black);color:var(--k-white);min-height:470px;position:relative;overflow:hidden}
+.past-event img{height:65%}
+.past-event-copy{padding:24px}
+.past-event h4{font-family:var(--serif);font-size:35px;font-weight:400;line-height:1;margin-top:12px}
+
+/* AI — dual-twin conversation chamber */
+.ai{background:var(--k-white);color:var(--k-black)}
+.ai-head{
+  display:grid;grid-template-columns:.9fr 1.1fr;gap:70px;align-items:end;
+  margin-bottom:70px;
+}
+.ai-head .section-copy{color:#55544f}
+.twin-chamber{
+  min-height:700px;
+  display:grid;grid-template-columns:.72fr 1.1fr .72fr;
+  border:1px solid rgba(0,0,0,.22);
+}
+.twin-person{
+  padding:34px;
+  display:flex;flex-direction:column;justify-content:space-between;
+  background:#ebe8de;
+}
+.twin-person:last-child{background:#dfddd4}
+.twin-avatar{height:310px;overflow:hidden;margin-bottom:28px}
+.twin-person h3{font-family:var(--serif);font-size:44px;font-weight:400;line-height:1}
+.twin-person p{color:#55534e;line-height:1.65;margin-top:14px}
+.twin-city{
+  font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.1em;
+  display:flex;justify-content:space-between;border-top:1px solid rgba(0,0,0,.2);padding-top:18px;margin-top:30px;
+}
+.twin-core{
+  position:relative;
+  background:var(--k-black);
+  color:var(--k-white);
+  padding:40px;
+  display:flex;flex-direction:column;justify-content:center;
+  overflow:hidden;
+}
+.twin-core::before{
+  content:"";position:absolute;width:430px;height:430px;border-radius:50%;
+  border:1px solid rgba(255,210,31,.35);left:50%;top:50%;transform:translate(-50%,-50%);
+}
+.twin-core::after{
+  content:"";position:absolute;width:280px;height:280px;border-radius:50%;
+  border:1px dashed rgba(255,210,31,.55);left:50%;top:50%;transform:translate(-50%,-50%);
+  animation:spin 24s linear infinite;
+}
+.twin-log{position:relative;z-index:2;display:flex;flex-direction:column;gap:14px}
+.log-line{
+  border:1px solid var(--k-line);
+  padding:16px 18px;
+  background:rgba(255,255,255,.03);
+  font-family:var(--mono);font-size:9px;line-height:1.6;
+  text-transform:uppercase;letter-spacing:.08em;
+}
+.log-line b{color:var(--k-yellow)}
+.match-orb{
+  width:140px;height:140px;border-radius:50%;background:var(--k-yellow);color:var(--k-black);
+  display:grid;place-items:center;text-align:center;
+  align-self:center;margin:20px 0;
+  font-family:var(--serif);font-size:31px;line-height:.9;
+  box-shadow:0 0 70px rgba(255,210,31,.25);
+}
+.ai-note{
+  display:flex;justify-content:space-between;align-items:center;
+  margin-top:30px;padding-top:24px;border-top:1px solid rgba(0,0,0,.18)
+}
+.ai-note p{max-width:700px;color:#55534f;line-height:1.65}
+.ai-note strong{font-family:var(--serif);font-size:38px;font-weight:400;color:var(--k-black)}
+
+/* membership */
+.membership{
+  background:var(--k-black);
+  min-height:760px;
+  display:grid;place-items:center;
+  text-align:center;
+  overflow:hidden;
+}
+.membership::before{
+  content:"";position:absolute;width:720px;height:720px;border-radius:50%;
+  border:1px solid rgba(255,255,255,.12);
+}
+.membership::after{
+  content:"";position:absolute;width:500px;height:500px;border-radius:50%;
+  border:1px dashed rgba(255,210,31,.35);animation:spinReverse 28s linear infinite;
+}
+.membership-inner{position:relative;z-index:2}
+.membership h2{
+  font-family:var(--serif);font-size:clamp(70px,9vw,145px);font-weight:400;
+  line-height:.82;letter-spacing:-.05em;max-width:8ch;margin:auto;
+}
+.membership p{max-width:620px;margin:32px auto;color:var(--k-grey);line-height:1.7}
+.membership-actions{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;gap:18px;
+  padding:17px 23px;border-radius:999px;
+  font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;
+}
+.btn-yellow{background:var(--k-yellow);color:var(--k-black)}
+.btn-line{border:1px solid var(--k-line)}
+
+footer{background:var(--k-black);border-top:1px solid var(--k-line);padding:70px 0 28px}
+.footer-grid{display:grid;grid-template-columns:1.3fr repeat(3,.7fr);gap:42px}
+.footer-brand{font-family:var(--serif);font-size:50px}
+.footer-grid h4{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--k-yellow);margin-bottom:18px}
+.footer-grid a{display:block;color:var(--k-grey);font-size:14px;margin:10px 0}
+.footer-copy{max-width:420px;color:var(--k-grey);line-height:1.7;margin-top:18px}
+.footer-bottom{
+  border-top:1px solid var(--k-line);margin-top:55px;padding-top:22px;
+  display:flex;justify-content:space-between;
+  color:#6f6e69;font-family:var(--mono);font-size:8px;text-transform:uppercase;letter-spacing:.1em;
+}
+
+/* responsive */
+@media(max-width:1100px){
+  body{cursor:auto}.cursor-dot,.cursor-ring{display:none}
+  .rail{display:none}.page{margin-left:0}
+  .mobile-nav{
+    display:flex;position:fixed;z-index:250;left:0;right:0;top:0;height:68px;
+    align-items:center;justify-content:space-between;padding:0 22px;
+    background:rgba(5,5,5,.82);backdrop-filter:blur(16px);border-bottom:1px solid var(--k-line);
+  }
+  .mobile-logo{display:flex;align-items:center;gap:10px;font-weight:700}
+  .mobile-logo span{width:38px;height:38px;border-radius:50%;background:var(--k-yellow);color:var(--k-black);display:grid;place-items:center;font-family:var(--serif);font-size:25px}
+  .mobile-menu-btn{border:0;background:transparent;color:var(--k-white);font-size:25px}
+  .mobile-menu{
+    position:fixed;inset:68px 0 auto;background:var(--k-black);padding:25px 22px 35px;
+    border-bottom:1px solid var(--k-line);display:none;z-index:245;
+  }
+  .mobile-menu.open{display:block}
+  .mobile-menu a{display:block;padding:15px 0;border-bottom:1px solid var(--k-line);font-family:var(--mono);font-size:10px;text-transform:uppercase}
+  .hero-grid{grid-template-columns:1fr;padding-top:115px}
+  .hero-copy{padding-top:35px}
+  .orbit-stage{height:680px}
+  .sequence-grid{grid-template-columns:1fr}
+  .sequence-intro{position:static}
+  .tv-wall{grid-template-columns:1fr}
+  .tv-side{grid-template-columns:1fr 1fr;grid-template-rows:auto}
+  .tv-tile:last-child{grid-column:1/-1}
+  .events-head,.ai-head{grid-template-columns:1fr}
+  .twin-chamber{grid-template-columns:1fr}
+  .twin-core{min-height:620px}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .footer-grid>div:first-child{grid-column:1/-1}
+}
+@media(max-width:720px){
+  .container{width:min(100% - 32px,1280px)}
+  .section{padding:90px 0}
+  .section-title{font-size:60px}
+  .section-copy{font-size:16px}
+  .hero{min-height:auto}
+  .hero-grid{min-height:auto;padding-bottom:30px}
+  .hero-title{font-size:69px}
+  .hero-desc{font-size:16px;margin-top:28px}
+  .hero-actions{align-items:flex-start;flex-direction:column}
+  .orbit-stage{height:540px;min-height:540px}
+  .orbit-outer{width:98%}.orbit-mid{width:74%}.portal{width:45%}
+  .photo-a{width:39%;height:37%;left:-2%;top:10%}
+  .photo-b{width:39%;height:36%;right:-2%;bottom:8%}
+  .photo-c{width:28%;height:25%;right:1%;top:5%}
+  .pill-ai{left:27%;top:0}.pill-tv{left:0;bottom:17%}.pill-events{right:0;top:47%}
+  .sequence-item{grid-template-columns:72px 1fr;min-height:auto;padding:32px 0}
+  .seq-no{font-size:58px}.seq-visual{grid-column:1/-1;height:310px}
+  .seq-content h3{font-size:56px}
+  .tv-header{display:block}.tv-header .section-copy{margin-top:25px}
+  .tv-lead{min-height:auto}.tv-lead-image{height:390px}
+  .tv-lead-copy{grid-template-columns:1fr}
+  .tv-side{grid-template-columns:1fr}.tv-tile:last-child{grid-column:auto}
+  .tv-tile{grid-template-columns:105px 1fr;padding:18px}.tv-tile-image{height:130px}
+  .room-row{grid-template-columns:75px 1fr 50px;gap:15px;padding:22px 0}
+  .room-meta,.room-type{grid-column:2}.room-arrow{grid-row:1/3;grid-column:3}
+  .room-date{font-size:53px}.room-title{font-size:34px}
+  .past-wall{grid-template-columns:1fr}.past-event{min-height:430px}
+  .twin-person{padding:25px}.twin-avatar{height:280px}.twin-core{padding:25px;min-height:620px}
+  .ai-note{align-items:flex-start;flex-direction:column;gap:20px}
+  .membership{min-height:650px;padding:80px 0}
+  .membership::before{width:520px;height:520px}.membership::after{width:350px;height:350px}
+  .membership h2{font-size:70px}
+  .footer-grid{grid-template-columns:1fr}
+  .footer-grid>div:first-child{grid-column:auto}
+  .footer-bottom{flex-direction:column;gap:10px}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;scroll-behavior:auto!important;transition:none!important}
+  .reveal{opacity:1;transform:none;clip-path:none}
+}
+
+/* ===============================================================
+   V6 — STICKY TOP NAVIGATION
+   =============================================================== */
+.rail,.mobile-nav,.mobile-menu{display:none!important}
+.page{margin-left:0!important}
+
+.top-nav{
+  position:sticky;
+  top:0;
+  z-index:500;
+  width:100%;
+  background:rgba(5,5,5,.84);
+  border-bottom:1px solid var(--k-line);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+}
+.top-nav::after{
+  content:"";
+  position:absolute;
+  left:0;bottom:-1px;
+  width:var(--nav-progress,0%);
+  height:2px;
+  background:var(--k-yellow);
+}
+.top-nav-inner{
+  height:80px;
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  align-items:center;
+  gap:42px;
+}
+.top-brand{display:inline-flex;align-items:center;gap:12px;justify-self:start}
+.top-brand-mark{
+  width:44px;height:44px;border-radius:50%;
+  display:grid;place-items:center;
+  color:var(--k-black);background:var(--k-yellow);
+  font-family:var(--serif);font-size:29px;line-height:1;
+  transition:transform .35s;
+}
+.top-brand:hover .top-brand-mark{transform:rotate(-10deg)}
+.top-brand-name{font-size:20px;font-weight:700;letter-spacing:-.02em}
+.top-links{
+  justify-self:center;
+  display:flex;align-items:center;gap:30px;
+}
+.top-links a{
+  position:relative;
+  padding:31px 0 28px;
+  color:#b9b8b2;
+  font-family:var(--mono);
+  font-size:9px;
+  letter-spacing:.11em;
+  text-transform:uppercase;
+  transition:color .25s;
+}
+.top-links a::after{
+  content:"";position:absolute;
+  left:0;right:100%;bottom:21px;height:1px;
+  background:var(--k-yellow);transition:right .25s;
+}
+.top-links a:hover{color:var(--k-white)}
+.top-links a:hover::after{right:0}
+.top-apply{
+  justify-self:end;
+  display:inline-flex;align-items:center;gap:14px;
+  padding:14px 19px;
+  border-radius:999px;
+  background:var(--k-yellow);
+  color:var(--k-black);
+  font-family:var(--mono);
+  font-size:8px;
+  font-weight:700;
+  letter-spacing:.09em;
+  text-transform:uppercase;
+}
+.top-menu-button{
+  display:none;
+  width:46px;height:46px;border-radius:50%;
+  border:1px solid var(--k-line);background:transparent;
+  color:var(--k-white);cursor:pointer;
+}
+.top-menu-button span{
+  display:block;width:18px;height:1px;background:currentColor;margin:5px auto;
+  transition:transform .3s,opacity .3s;
+}
+.top-menu-button.open span:first-child{transform:translateY(3px) rotate(45deg)}
+.top-menu-button.open span:last-child{transform:translateY(-3px) rotate(-45deg)}
+.top-mobile-panel{display:none}
+
+/* Correct hero position below sticky navigation */
+.hero{min-height:calc(100vh - 80px)}
+.hero-grid{min-height:calc(100vh - 80px);padding-top:46px}
+
+/* ===============================================================
+   KRIGNAL TV — FIVE FORMAT CARDS
+   =============================================================== */
+.tv-format-grid{
+  display:grid;
+  grid-template-columns:repeat(6,minmax(0,1fr));
+  gap:14px;
+  margin-bottom:68px;
+  position:relative;
+  z-index:3;
+}
+.tv-format-card{
+  grid-column:span 2;
+  position:relative;
+  min-height:345px;
+  padding:30px;
+  border:1px solid rgba(255,210,31,.35);
+  background:
+    linear-gradient(145deg,rgba(255,210,31,.055),transparent 50%),
+    var(--k-black-2);
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+  transition:transform .4s cubic-bezier(.2,.7,.2,1),background .4s,border-color .4s,color .4s;
+}
+.tv-format-wide{
+  grid-column:3/span 2;
+}
+.tv-format-card::before{
+  content:"";
+  position:absolute;
+  width:180px;height:180px;border-radius:50%;
+  border:1px solid rgba(255,210,31,.12);
+  right:-76px;top:-76px;
+  transition:transform .5s,border-color .4s;
+}
+.tv-format-card::after{
+  content:"";
+  position:absolute;left:0;right:0;bottom:0;height:4px;
+  background:var(--k-yellow);
+  transform:scaleX(0);transform-origin:left;
+  transition:transform .4s;
+}
+.tv-format-card:hover{
+  transform:translateY(-10px);
+  border-color:var(--k-yellow);
+  background:var(--k-yellow);
+  color:var(--k-black);
+}
+.tv-format-card:hover::before{
+  transform:scale(1.22);
+  border-color:rgba(0,0,0,.2);
+}
+.tv-format-card:hover::after{transform:scaleX(1)}
+.tv-format-icon{
+  width:58px;height:58px;
+  margin-bottom:44px;
+  color:var(--k-yellow);
+}
+.tv-format-icon svg{
+  width:100%;height:100%;
+  fill:none;stroke:currentColor;stroke-width:1.35;
+  stroke-linecap:round;stroke-linejoin:round;
+}
+.tv-format-card:hover .tv-format-icon{color:var(--k-black)}
+.tv-format-number{
+  color:var(--k-yellow);
+  margin-bottom:13px;
+  transition:color .3s;
+}
+.tv-format-card:hover .tv-format-number{color:#645000}
+.tv-format-card h3{
+  font-family:var(--serif);
+  font-size:36px;
+  font-weight:400;
+  line-height:1;
+  letter-spacing:-.025em;
+  margin-bottom:16px;
+}
+.tv-format-card p{
+  color:var(--k-grey);
+  font-size:14px;
+  line-height:1.65;
+  transition:color .3s;
+}
+.tv-format-card:hover p{color:#3c3520}
+.tv-format-link{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-top:auto;padding-top:25px;
+  font-family:var(--mono);font-size:8px;
+  letter-spacing:.1em;text-transform:uppercase;
+  opacity:0;transform:translateY(8px);
+  transition:opacity .3s,transform .3s;
+}
+.tv-format-card:hover .tv-format-link{opacity:1;transform:none}
+.tv-categories{display:none}
+
+/* ===============================================================
+   FAQ ACCORDION
+   =============================================================== */
+.faq{
+  background:var(--k-black-2);
+  overflow:hidden;
+}
+.faq::before{
+  content:"FAQ";
+  position:absolute;
+  left:-2vw;bottom:-5vw;
+  font-family:var(--serif);
+  font-size:28vw;line-height:.7;
+  color:transparent;
+  -webkit-text-stroke:1px rgba(255,255,255,.035);
+  pointer-events:none;
+}
+.faq-layout{
+  display:grid;
+  grid-template-columns:.72fr 1.28fr;
+  gap:90px;
+  align-items:start;
+  position:relative;z-index:2;
+}
+.faq-intro{
+  position:sticky;
+  top:120px;
+}
+.faq-intro .section-copy{margin-top:30px}
+.faq-contact-card{
+  margin-top:50px;
+  padding:28px;
+  border:1px solid rgba(255,210,31,.28);
+  background:rgba(255,210,31,.045);
+}
+.faq-contact-card h3{
+  font-family:var(--serif);
+  font-size:34px;font-weight:400;line-height:1.05;
+  margin:14px 0 25px;
+}
+.faq-contact-card a{
+  display:flex;justify-content:space-between;align-items:center;
+  border-top:1px solid var(--k-line);
+  padding-top:18px;
+  font-family:var(--mono);font-size:9px;
+  text-transform:uppercase;letter-spacing:.1em;
+}
+.faq-list{border-top:1px solid var(--k-line)}
+.faq-item{border-bottom:1px solid var(--k-line)}
+.faq-question{
+  width:100%;
+  min-height:108px;
+  display:flex;justify-content:space-between;align-items:center;
+  gap:25px;
+  padding:25px 0;
+  border:0;background:transparent;color:var(--k-white);
+  cursor:pointer;text-align:left;
+}
+.faq-question span{
+  font-family:var(--serif);
+  font-size:clamp(27px,2.5vw,39px);
+  line-height:1.1;
+  font-weight:400;
+}
+.faq-question b{
+  display:inline-block;
+  min-width:50px;
+  color:var(--k-yellow);
+  font-family:var(--mono);
+  font-size:9px;
+  vertical-align:middle;
+}
+.faq-question i{
+  position:relative;flex:0 0 48px;width:48px;height:48px;
+  border:1px solid var(--k-line);border-radius:50%;
+  transition:background .3s,border-color .3s,transform .3s;
+}
+.faq-question i::before,.faq-question i::after{
+  content:"";position:absolute;left:50%;top:50%;
+  width:16px;height:1px;background:var(--k-white);
+  transform:translate(-50%,-50%);transition:transform .3s,background .3s;
+}
+.faq-question i::after{transform:translate(-50%,-50%) rotate(90deg)}
+.faq-item.open .faq-question i{
+  background:var(--k-yellow);border-color:var(--k-yellow);transform:rotate(180deg);
+}
+.faq-item.open .faq-question i::before,
+.faq-item.open .faq-question i::after{background:var(--k-black)}
+.faq-item.open .faq-question i::after{transform:translate(-50%,-50%) rotate(0)}
+.faq-answer{
+  display:grid;
+  grid-template-rows:0fr;
+  transition:grid-template-rows .45s cubic-bezier(.2,.7,.2,1);
+}
+.faq-answer>div{overflow:hidden}
+.faq-answer p{
+  max-width:760px;
+  padding:0 75px 30px 50px;
+  color:var(--k-grey);
+  font-size:16px;line-height:1.75;
+}
+.faq-item.open .faq-answer{grid-template-rows:1fr}
+
+/* ===============================================================
+   RESPONSIVE OVERRIDES
+   =============================================================== */
+@media(max-width:1100px){
+  .top-nav-inner{grid-template-columns:auto 1fr auto;height:70px}
+  .top-links,.top-apply{display:none}
+  .top-menu-button{display:block;justify-self:end}
+  .top-mobile-panel{
+    display:grid;
+    grid-template-rows:0fr;
+    overflow:hidden;
+    background:var(--k-black);
+    border-top:1px solid transparent;
+    transition:grid-template-rows .4s,border-color .4s;
+  }
+  .top-mobile-panel::before{
+    content:"";min-height:0;
+  }
+  .top-mobile-panel.open{
+    grid-template-rows:auto;
+    padding:10px max(22px,calc((100vw - min(1280px,calc(100vw - 56px)))/2)) 25px;
+    border-color:var(--k-line);
+  }
+  .top-mobile-panel a{
+    display:flex;align-items:center;gap:18px;
+    padding:17px 0;border-bottom:1px solid var(--k-line);
+    font-family:var(--serif);font-size:28px;
+  }
+  .top-mobile-panel a span{
+    color:var(--k-yellow);font-family:var(--mono);font-size:8px;
+  }
+  .top-mobile-panel .mobile-apply-link{
+    justify-content:center;
+    margin-top:18px;padding:15px 18px;border:0;border-radius:999px;
+    background:var(--k-yellow);color:var(--k-black);
+    font-family:var(--mono);font-size:9px;text-transform:uppercase;
+  }
+  .hero{min-height:auto}
+  .hero-grid{min-height:auto;padding-top:75px}
+  .tv-format-grid{grid-template-columns:repeat(2,1fr)}
+  .tv-format-card,.tv-format-wide{grid-column:auto}
+  .tv-format-wide{grid-column:1/-1}
+  .faq-layout{grid-template-columns:1fr;gap:55px}
+  .faq-intro{position:static}
+}
+
+@media(max-width:720px){
+  .top-nav-inner{height:64px}
+  .top-brand-mark{width:39px;height:39px;font-size:25px}
+  .top-brand-name{font-size:18px}
+  .top-mobile-panel.open{padding-inline:16px}
+  .hero-grid{padding-top:55px}
+  .tv-format-grid{grid-template-columns:1fr;gap:12px;margin-bottom:48px}
+  .tv-format-card,.tv-format-wide{grid-column:auto;min-height:310px;padding:25px}
+  .tv-format-icon{margin-bottom:34px}
+  .tv-format-card h3{font-size:34px}
+  .tv-format-link{opacity:1;transform:none}
+  .faq-question{min-height:92px}
+  .faq-question span{font-size:26px}
+  .faq-question b{display:block;margin-bottom:8px}
+  .faq-question i{flex-basis:42px;width:42px;height:42px}
+  .faq-answer p{padding:0 0 28px;font-size:15px}
+  .faq-contact-card{margin-top:35px}
+}
+
+</style>
+</head>
+<body>
+<div class="cursor-dot"></div>
+<div class="cursor-ring"></div>
+
+<header class="top-nav">
+  <div class="container top-nav-inner">
+    <a class="top-brand" href="#top" aria-label="Krignal home">
+      <span class="top-brand-mark">K</span>
+      <span class="top-brand-name">Krignal</span>
+    </a>
+
+    <nav class="top-links" aria-label="Primary navigation">
+      <a href="#signal">The Signal</a>
+      <a href="#tv">Krignal TV</a>
+      <a href="#events">Events</a>
+      <a href="#ai">Krignal AI</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+
+    <a class="top-apply magnetic" href="#membership">
+      Apply for membership <span>↗</span>
+    </a>
+
+    <button class="top-menu-button" type="button" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span>
+    </button>
+  </div>
+
+  <div class="top-mobile-panel">
+    <a href="#signal"><span>01</span>The Signal</a>
+    <a href="#tv"><span>02</span>Krignal TV</a>
+    <a href="#events"><span>03</span>Events</a>
+    <a href="#ai"><span>04</span>Krignal AI</a>
+    <a href="#faq"><span>05</span>FAQ</a>
+    <a class="mobile-apply-link" href="#membership">Apply for membership ↗</a>
+  </div>
+</header>
+
+<div class="page">
+<main>
+<section class="hero" id="top">
+  <div class="hero-word">KRIGNAL</div>
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <div class="hero-kicker mono reveal"><span>India’s Global Business Signal</span><i></i></div>
+      <h1 class="hero-title reveal" data-delay="1">Where the right people become <em>visible.</em></h1>
+      <p class="hero-desc reveal" data-delay="2">Krignal turns people, stories, rooms and intent into meaningful business movement—before opportunity becomes obvious.</p>
+      <div class="hero-actions reveal" data-delay="3">
+        <a class="hero-cta magnetic" href="#signal">Enter the network <span>↘</span></a>
+        <span class="hero-note">Curated membership<br>India ↔ Global markets</span>
+      </div>
+    </div>
+
+    <div class="orbit-stage reveal" data-delay="1">
+      <div class="orbit-outer"></div>
+      <div class="orbit-mid"></div>
+      <div class="orbit-inner"></div>
+
+      <div class="portal"><span class="portal-k">K</span></div>
+
+      <figure class="orbit-photo photo-a">
+        <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=900&q=85" alt="Professionals collaborating">
+      </figure>
+      <figure class="orbit-photo photo-b">
+        <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=900&q=85" alt="Business conversation">
+      </figure>
+      <figure class="orbit-photo photo-c">
+        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=85" alt="Business leader">
+      </figure>
+
+      <span class="signal-pill pill-tv"><b>01</b> Krignal TV</span>
+      <span class="signal-pill pill-events"><b>02</b> Curated Events</span>
+      <span class="signal-pill pill-ai"><b>03</b> Twin AI</span>
+    </div>
+  </div>
+</section>
+
+<div class="signal-strip" aria-hidden="true">
+  <div class="signal-track">
+    <div class="signal-item">Discover the people worth knowing <span>✦</span></div>
+    <div class="signal-item">Enter rooms built for relevance <span>✦</span></div>
+    <div class="signal-item">Stay connected through intelligent context <span>✦</span></div>
+    <div class="signal-item">Discover the people worth knowing <span>✦</span></div>
+    <div class="signal-item">Enter rooms built for relevance <span>✦</span></div>
+    <div class="signal-item">Stay connected through intelligent context <span>✦</span></div>
+  </div>
+</div>
+
+<section class="section sequence" id="signal">
+  <div class="container sequence-grid">
+    <div class="sequence-intro reveal">
+      <div class="section-tag mono">The Krignal Signal</div>
+      <h2 class="section-title">Three movements.<br><span class="yellow">One network.</span></h2>
+      <p class="section-copy">Krignal is not a media page, event listing or directory. It is a connected system that helps people become known, meet with context and stay relevant to opportunity.</p>
+    </div>
+
+    <div class="sequence-list">
+      <article class="sequence-item reveal">
+        <span class="seq-no">01</span>
+        <div class="seq-content">
+          <h3>Become<br>known.</h3>
+          <p>Krignal TV turns founders, companies, journeys and useful insights into stories that travel beyond a room.</p>
+          <div class="seq-tags"><span>Brand stories</span><span>Get to know</span><span>Week’s insights</span></div>
+        </div>
+        <div class="seq-visual">
+          <div class="seq-image"><img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=700&q=85" alt="Business studio"></div>
+          <div class="seq-yellow">TV</div>
+        </div>
+      </article>
+
+      <article class="sequence-item reveal">
+        <span class="seq-no">02</span>
+        <div class="seq-content">
+          <h3>Enter the<br>right room.</h3>
+          <p>Small, relevant gatherings bring people from the same industry or intent together—without the noise of generic networking.</p>
+          <div class="seq-tags"><span>Invite only</span><span>Off the record</span><span>Member rooms</span></div>
+        </div>
+        <div class="seq-visual">
+          <div class="seq-image"><img src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=700&q=85" alt="Curated business event"></div>
+          <div class="seq-yellow">E</div>
+        </div>
+      </article>
+
+      <article class="sequence-item reveal">
+        <span class="seq-no">03</span>
+        <div class="seq-content">
+          <h3>Stay<br>matched.</h3>
+          <p>Your Krignal AI twin understands your context and keeps looking for relevant people—even when you are not actively searching.</p>
+          <div class="seq-tags"><span>Intent matching</span><span>Cross-border</span><span>Human decision</span></div>
+        </div>
+        <div class="seq-visual">
+          <div class="seq-image"><img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=700&q=85" alt="AI-enabled business connection"></div>
+          <div class="seq-yellow">AI</div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section tv" id="tv">
+  <div class="tv-word">TV</div>
+  <div class="container">
+    <div class="tv-header reveal">
+      <div>
+        <div class="section-tag mono">Krignal TV</div>
+        <h2 class="section-title">Stories that make<br>people <span class="yellow">matter.</span></h2>
+      </div>
+      <p class="section-copy">Business storytelling designed for discovery—not vanity. Watch founders, companies, celebrities and journeys with substance.</p>
+    </div>
+
+    <div class="tv-format-grid">
+      <article class="tv-format-card reveal">
+        <div class="tv-format-icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48">
+            <path d="M9 34V16l15-8 15 8v18l-15 8-15-8Z"/>
+            <path d="m9 16 15 9 15-9M24 25v17M15 12l9 13 9-13"/>
+          </svg>
+        </div>
+        <span class="tv-format-number mono">01 / Identity</span>
+        <h3>Brand Stories</h3>
+        <p>Meaningful films that show what a company stands for, how it was built and why people should remember it.</p>
+        <span class="tv-format-link">Explore the format <b>↗</b></span>
+      </article>
+
+      <article class="tv-format-card reveal" data-delay="1">
+        <div class="tv-format-icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48">
+            <path d="M13 37h22M16 32h16V12H16v20Z"/>
+            <path d="m20 19 4-4 4 4M24 15v10M20 28h8"/>
+          </svg>
+        </div>
+        <span class="tv-format-number mono">02 / Journey</span>
+        <h3>Journeys That Inspire</h3>
+        <p>Honest conversations about risk, resilience, difficult decisions and the milestones behind visible success.</p>
+        <span class="tv-format-link">Explore the format <b>↗</b></span>
+      </article>
+
+      <article class="tv-format-card reveal" data-delay="2">
+        <div class="tv-format-icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48">
+            <circle cx="18" cy="17" r="6"/>
+            <path d="M7 37c1-8 5-12 11-12s10 4 11 12"/>
+            <path d="M29 14h12v10H29l-4 4V14h4Z"/>
+          </svg>
+        </div>
+        <span class="tv-format-number mono">03 / Personality</span>
+        <h3>Get to Know</h3>
+        <p>Profiles that move beyond job titles to reveal the person, values, interests and thinking behind the work.</p>
+        <span class="tv-format-link">Explore the format <b>↗</b></span>
+      </article>
+
+      <article class="tv-format-card reveal" data-delay="1">
+        <div class="tv-format-icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48">
+            <circle cx="15" cy="18" r="5"/>
+            <circle cx="33" cy="18" r="5"/>
+            <path d="M5 38c1-8 4-12 10-12s9 4 10 12M23 38c1-8 4-12 10-12s9 4 10 12"/>
+            <path d="M20 15h8"/>
+          </svg>
+        </div>
+        <span class="tv-format-number mono">04 / Connection</span>
+        <h3>Find Your Person</h3>
+        <p>Stories and introductions that help members discover the collaborator, customer, mentor or partner they need.</p>
+        <span class="tv-format-link">Explore the format <b>↗</b></span>
+      </article>
+
+      <article class="tv-format-card tv-format-wide reveal" data-delay="2">
+        <div class="tv-format-icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48">
+            <path d="M8 36h32M12 31l8-9 7 5 10-13"/>
+            <path d="M31 14h6v6M11 12h10M11 17h6"/>
+          </svg>
+        </div>
+        <span class="tv-format-number mono">05 / Intelligence</span>
+        <h3>Week’s Insights</h3>
+        <p>A concise weekly signal covering ideas, shifts, opportunities and conversations that business leaders should not miss.</p>
+        <span class="tv-format-link">Explore the format <b>↗</b></span>
+      </article>
+    </div>
+
+    <div class="tv-wall">
+      <article class="tv-lead reveal">
+        <div class="tv-lead-image">
+          <img src="https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=1400&q=85" alt="Featured founder conversation">
+        </div>
+        <div class="tv-lead-copy">
+          <span class="mono">Brand Story / 24 min</span>
+          <div>
+            <h3>The decisions nobody saw.</h3>
+            <p>A founder speaks about the unseen choices, failures and relationships behind a company people now recognise.</p>
+          </div>
+        </div>
+      </article>
+
+      <div class="tv-side">
+        <article class="tv-tile reveal" data-delay="1">
+          <div class="tv-tile-image"><img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=500&q=85" alt=""></div>
+          <div><span class="mono yellow">Journeys that inspire</span><h4>From local belief to global scale.</h4><p>Founder film · 18 minutes</p></div>
+        </article>
+
+        <article class="tv-tile reveal" data-delay="2">
+          <div class="tv-tile-image"><img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=500&q=85" alt=""></div>
+          <div><span class="mono yellow">Find your person</span><h4>The introduction that changed everything.</h4><p>Network story · 13 minutes</p></div>
+        </article>
+
+        <article class="tv-tile reveal" data-delay="3">
+          <div class="tv-tile-image"><img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=500&q=85" alt=""></div>
+          <div><span class="mono yellow">Week’s insights</span><h4>What smart operators are watching now.</h4><p>Briefing · 09 minutes</p></div>
+        </article>
+      </div>
+    </div>
+
+    <div class="tv-categories reveal">
+      <span>Brand Stories</span><span>Journeys That Inspire</span><span>Get to Know</span><span>Find Your Person</span><span>Week’s Insights</span><span>Celebrity Conversations</span>
+    </div>
+  </div>
+</section>
+
+<section class="section events" id="events">
+  <div class="container">
+    <div class="events-head reveal">
+      <div>
+        <div class="section-tag mono" style="color:#2b2400"><span>Krignal Events</span></div>
+        <h2 class="section-title">Rooms designed<br>for <em>relevance.</em></h2>
+      </div>
+      <p class="section-copy">A developer should meet developers, technology buyers, investors and operators—not a random crowd. Every Krignal room begins with context.</p>
+    </div>
+
+    <div class="event-toggle reveal">
+      <button class="active" data-target="upcoming-events">Upcoming</button>
+      <button data-target="past-events">Past events</button>
+    </div>
+
+    <div class="event-panel active" id="upcoming-events">
+      <div class="room-ledger">
+        <article class="room-row reveal">
+          <div class="room-date">24<small>Sep / Chennai</small></div>
+          <h3 class="room-title">Builders of the next internet</h3>
+          <div><div class="room-meta">Developers · Product leaders · CTOs</div><div class="room-type">Invite only</div></div>
+          <span class="room-arrow">↗</span>
+        </article>
+        <article class="room-row reveal" data-delay="1">
+          <div class="room-date">08<small>Oct / Dubai</small></div>
+          <h3 class="room-title">India–GCC Growth Exchange</h3>
+          <div><div class="room-meta">Founders · Investors · Market leaders</div><div class="room-type">Off the record</div></div>
+          <span class="room-arrow">↗</span>
+        </article>
+        <article class="room-row reveal" data-delay="2">
+          <div class="room-date">19<small>Oct / Bengaluru</small></div>
+          <h3 class="room-title">Developer Leadership Circle</h3>
+          <div><div class="room-meta">Engineering leaders · Architects</div><div class="room-type">Internal members</div></div>
+          <span class="room-arrow">↗</span>
+        </article>
+        <article class="room-row reveal" data-delay="3">
+          <div class="room-date">02<small>Nov / Chennai</small></div>
+          <h3 class="room-title">Founder–Investor Breakfast</h3>
+          <div><div class="room-meta">Growth-stage founders · Capital partners</div><div class="room-type">Invite only</div></div>
+          <span class="room-arrow">↗</span>
+        </article>
+      </div>
+    </div>
+
+    <div class="event-panel" id="past-events">
+      <div class="past-wall">
+        <article class="past-event">
+          <img src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=900&q=85" alt="Past Krignal event">
+          <div class="past-event-copy"><span class="mono yellow">Chennai / 2026</span><h4>Technology Leaders Forum</h4></div>
+        </article>
+        <article class="past-event">
+          <img src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=700&q=85" alt="Past dinner event">
+          <div class="past-event-copy"><span class="mono yellow">Dubai / 2026</span><h4>India–GCC Business Dinner</h4></div>
+        </article>
+        <article class="past-event">
+          <img src="https://images.unsplash.com/photo-1503428593586-e225b39bddfe?auto=format&fit=crop&w=700&q=85" alt="Past creative forum">
+          <div class="past-event-copy"><span class="mono yellow">Bengaluru / 2026</span><h4>Creative Economy Circle</h4></div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section ai" id="ai">
+  <div class="container">
+    <div class="ai-head reveal">
+      <div>
+        <div class="section-tag mono" style="color:#665400">Krignal AI</div>
+        <h2 class="section-title">Two AI twins.<br>One human <span class="yellow">yes.</span></h2>
+      </div>
+      <p class="section-copy">Your AI twin does not replace relationships. It removes irrelevant searching, exchanges useful context and brings humans together only when both sides see value.</p>
+    </div>
+
+    <div class="twin-chamber reveal">
+      <article class="twin-person">
+        <div>
+          <div class="twin-avatar"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=700&q=85" alt="Developer in Chennai"></div>
+          <span class="mono">Person A</span>
+          <h3>Developer in Chennai</h3>
+          <p>Strong product engineering experience. Open to high-value international collaborations.</p>
+        </div>
+        <div class="twin-city"><span>Your twin AI</span><span>Chennai</span></div>
+      </article>
+
+      <div class="twin-core">
+        <div class="twin-log">
+          <div class="log-line"><b>01 / Intent detected</b><br>Dubai member is looking for a trusted Chennai development partner.</div>
+          <div class="log-line"><b>02 / Context exchanged</b><br>Skills, availability, business fit and working preferences reviewed.</div>
+          <div class="match-orb">94%<br>fit</div>
+          <div class="log-line"><b>03 / Both sides approve</b><br>Human meeting recommended. No automated commitment is made.</div>
+        </div>
+      </div>
+
+      <article class="twin-person">
+        <div>
+          <div class="twin-avatar"><img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=700&q=85" alt="Business leader in Dubai"></div>
+          <span class="mono">Person B</span>
+          <h3>Business leader in Dubai</h3>
+          <p>Needs a reliable Chennai-based technology partner for a new regional business platform.</p>
+        </div>
+        <div class="twin-city"><span>Their twin AI</span><span>Dubai</span></div>
+      </article>
+    </div>
+
+    <div class="ai-note reveal">
+      <p>The AI layer handles discovery and context. The relationship, trust and final decision always remain human.</p>
+      <strong>Automation first.<br>Human when it matters.</strong>
+    </div>
+  </div>
+</section>
+
+<section class="section faq" id="faq">
+  <div class="container">
+    <div class="faq-layout">
+      <div class="faq-intro reveal">
+        <div class="section-tag mono">Frequently Asked Questions</div>
+        <h2 class="section-title">Before you enter<br>the <span class="yellow">network.</span></h2>
+        <p class="section-copy">A clear introduction to how Krignal TV, curated events, AI twins and membership work together.</p>
+
+        <div class="faq-contact-card">
+          <span class="mono yellow">Still have a question?</span>
+          <h3>Speak with the Krignal team.</h3>
+          <a href="#membership">Start a conversation <span>↗</span></a>
+        </div>
+      </div>
+
+      <div class="faq-list">
+        <article class="faq-item reveal open">
+          <button class="faq-question" type="button" aria-expanded="true">
+            <span><b>01</b> What exactly is Krignal?</span>
+            <i></i>
+          </button>
+          <div class="faq-answer">
+            <div>
+              <p>Krignal is a curated global business network built around three connected layers: Krignal TV for discovery, Krignal Events for meaningful in-person rooms, and Krignal AI for context-based introductions.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="faq-item reveal" data-delay="1">
+          <button class="faq-question" type="button" aria-expanded="false">
+            <span><b>02</b> What kind of content appears on Krignal TV?</span>
+            <i></i>
+          </button>
+          <div class="faq-answer">
+            <div>
+              <p>Krignal TV features Brand Stories, Journeys That Inspire, Get to Know profiles, Find Your Person connection stories and Week’s Insights. Celebrity and leadership conversations can also appear as special programming.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="faq-item reveal" data-delay="1">
+          <button class="faq-question" type="button" aria-expanded="false">
+            <span><b>03</b> Who can attend Krignal Events?</span>
+            <i></i>
+          </button>
+          <div class="faq-answer">
+            <div>
+              <p>Access depends on the event. Some rooms are open to relevant applicants, while others are Invite Only, Off the Record or reserved for Internal Members. Every gathering is curated around a specific industry or business intent.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="faq-item reveal" data-delay="2">
+          <button class="faq-question" type="button" aria-expanded="false">
+            <span><b>04</b> How does the Krignal AI twin work?</span>
+            <i></i>
+          </button>
+          <div class="faq-answer">
+            <div>
+              <p>Your AI twin understands your skills, interests and current intent. It exchanges relevant context with another member’s AI twin and recommends a human introduction only when both sides appear meaningfully aligned.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="faq-item reveal" data-delay="2">
+          <button class="faq-question" type="button" aria-expanded="false">
+            <span><b>05</b> Does AI make decisions on behalf of members?</span>
+            <i></i>
+          </button>
+          <div class="faq-answer">
+            <div>
+              <p>No. AI supports discovery, filtering and context exchange. Members always decide whether to meet, collaborate or move forward. Trust and final decisions remain human.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="faq-item reveal" data-delay="3">
+          <button class="faq-question" type="button" aria-expanded="false">
+            <span><b>06</b> How can an individual or company join?</span>
+            <i></i>
+          </button>
+          <div class="faq-answer">
+            <div>
+              <p>Membership begins with an application or referral. Krignal reviews relevance, intent and potential contribution to the network before confirming individual or corporate membership.</p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="membership" id="membership">
+  <div class="membership-inner container reveal">
+    <span class="mono yellow">Membership by application</span>
+    <h2>Be where the signal begins.</h2>
+    <p>Join a curated network built around meaningful visibility, useful rooms and context-rich introductions.</p>
+    <div class="membership-actions">
+      <a class="btn btn-yellow magnetic" href="#">Apply as an individual ↗</a>
+      <a class="btn btn-line magnetic" href="#">Apply as a company ↗</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">Krignal</div>
+        <p class="footer-copy">India’s global business signal for discovering people, entering relevant rooms and staying connected to opportunity.</p>
+      </div>
+      <div><h4>Explore</h4><a href="#signal">The Signal</a><a href="#tv">Krignal TV</a><a href="#events">Events</a></div>
+      <div><h4>Network</h4><a href="#ai">Krignal AI</a><a href="#membership">Membership</a><a href="#">Corporate</a></div>
+      <div><h4>Company</h4><a href="#">About</a><a href="#faq">FAQ</a><a href="#">Contact</a><a href="#">Privacy</a></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 Krignal. All rights reserved.</span><span>India ↔ The World</span></div>
+  </div>
+</footer>
+</div>
+
+<script>
+const reveals = document.querySelectorAll(".reveal");
+const revealObserver = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add("in");
+      revealObserver.unobserve(entry.target);
+    }
+  });
+},{threshold:.12,rootMargin:"0px 0px -55px"});
+reveals.forEach(el=>revealObserver.observe(el));
+
+const topMenuButton=document.querySelector(".top-menu-button");
+const topMobilePanel=document.querySelector(".top-mobile-panel");
+
+topMenuButton?.addEventListener("click",()=>{
+  const isOpen=topMobilePanel.classList.toggle("open");
+  topMenuButton.classList.toggle("open",isOpen);
+  topMenuButton.setAttribute("aria-expanded",String(isOpen));
+});
+
+topMobilePanel?.querySelectorAll("a").forEach(link=>{
+  link.addEventListener("click",()=>{
+    topMobilePanel.classList.remove("open");
+    topMenuButton.classList.remove("open");
+    topMenuButton.setAttribute("aria-expanded","false");
+  });
+});
+
+
+document.querySelectorAll(".faq-question").forEach(button=>{
+  button.addEventListener("click",()=>{
+    const item=button.closest(".faq-item");
+    const wasOpen=item.classList.contains("open");
+
+    document.querySelectorAll(".faq-item").forEach(other=>{
+      other.classList.remove("open");
+      other.querySelector(".faq-question")?.setAttribute("aria-expanded","false");
+    });
+
+    if(!wasOpen){
+      item.classList.add("open");
+      button.setAttribute("aria-expanded","true");
+    }
+  });
+});
+
+const topNav=document.querySelector(".top-nav");
+function updateNavProgress(){
+  const max=document.documentElement.scrollHeight-window.innerHeight;
+  const progress=max>0?(window.scrollY/max)*100:0;
+  topNav?.style.setProperty("--nav-progress",progress+"%");
+}
+window.addEventListener("scroll",updateNavProgress,{passive:true});
+updateNavProgress();
+
+document.querySelectorAll(".event-toggle button").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    document.querySelectorAll(".event-toggle button").forEach(b=>b.classList.remove("active"));
+    document.querySelectorAll(".event-panel").forEach(p=>p.classList.remove("active"));
+    btn.classList.add("active");
+    document.getElementById(btn.dataset.target).classList.add("active");
+  });
+});
+
+const dot=document.querySelector(".cursor-dot");
+const ring=document.querySelector(".cursor-ring");
+let mx=0,my=0,rx=0,ry=0;
+window.addEventListener("mousemove",e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+"px";dot.style.top=my+"px"});
+function follow(){
+  rx+=(mx-rx)*.13;ry+=(my-ry)*.13;
+  ring.style.left=rx+"px";ring.style.top=ry+"px";
+  requestAnimationFrame(follow);
+}
+follow();
+document.querySelectorAll("a,button,.room-row,.tv-tile").forEach(el=>{
+  el.addEventListener("mouseenter",()=>document.body.classList.add("cursor-hover"));
+  el.addEventListener("mouseleave",()=>document.body.classList.remove("cursor-hover"));
+});
+
+document.querySelectorAll(".magnetic").forEach(el=>{
+  el.addEventListener("mousemove",e=>{
+    const r=el.getBoundingClientRect();
+    const x=e.clientX-r.left-r.width/2;
+    const y=e.clientY-r.top-r.height/2;
+    el.style.transform=`translate(${x*.12}px,${y*.12}px)`;
+  });
+  el.addEventListener("mouseleave",()=>el.style.transform="");
+});
+</script>
+</body>
+</html>

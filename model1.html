@@ -1,0 +1,3999 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>Krignal — India’s Global Business Network</title>
+    <meta
+      name="description"
+      content="Krignal connects ambitious people through stories, curated rooms and intelligent introductions."
+    />
+    <meta name="theme-color" content="#060606" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Caslon+Display&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- GLOBAL / COMMON CSS ONLY -->
+    <style>
+      :root {
+        --black: #060606;
+        --black-2: #101010;
+        --black-3: #181818;
+        --white: #f6f3ea;
+        --paper: #ebe7dc;
+        --yellow: #edc75a;
+        --yellow-soft: #f5dd95;
+        --grey: #9d9a91;
+        --line: rgba(246, 243, 234, 0.15);
+        --dark-line: rgba(0, 0, 0, 0.17);
+        --serif: "Libre Caslon Display", Georgia, serif;
+        --sans: "DM Sans", system-ui, sans-serif;
+        --mono: "IBM Plex Mono", monospace;
+        --nav-height: 76px;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background: var(--black);
+        color: var(--white);
+        font-family: var(--sans);
+        overflow-x: hidden;
+      }
+
+      body.menu-open {
+        overflow: hidden;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      button,
+      input,
+      textarea,
+      select {
+        font: inherit;
+      }
+
+      button {
+        color: inherit;
+      }
+
+      img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      ::selection {
+        background: var(--yellow);
+        color: var(--black);
+      }
+
+      .container {
+        width: min(1400px, calc(100% - 48px));
+        margin-inline: auto;
+      }
+
+      .section {
+        position: relative;
+        padding: 120px 0;
+      }
+
+      .mono {
+        font-family: var(--mono);
+        font-size: 10px;
+        line-height: 1.4;
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+      }
+
+      .yellow {
+        color: var(--yellow);
+      }
+
+      .section-label {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        color: var(--yellow);
+        margin-bottom: 26px;
+      }
+
+      .section-label::before {
+        content: "";
+        width: 44px;
+        height: 1px;
+        background: currentColor;
+      }
+
+      .section-title {
+        font: 400 clamp(58px, 7.5vw, 112px) / 0.9 var(--serif);
+        letter-spacing: -0.045em;
+      }
+
+      .section-copy {
+        max-width: 660px;
+        color: var(--grey);
+        font-size: 18px;
+        line-height: 1.7;
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(38px);
+        filter: blur(4px);
+        transition:
+          opacity 0.8s cubic-bezier(0.2, 0.7, 0.2, 1),
+          transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1),
+          filter 0.8s ease;
+      }
+
+      .reveal.in {
+        opacity: 1;
+        transform: none;
+        filter: none;
+      }
+
+      .reveal[data-delay="1"] {
+        transition-delay: 0.12s;
+      }
+
+      .reveal[data-delay="2"] {
+        transition-delay: 0.24s;
+      }
+
+      .reveal[data-delay="3"] {
+        transition-delay: 0.36s;
+      }
+
+      @media (max-width: 700px) {
+        :root {
+          --nav-height: 66px;
+        }
+
+        .container {
+          width: min(100% - 30px, 1400px);
+        }
+
+        .section {
+          padding: 84px 0;
+        }
+
+        .section-title {
+          font-size: 56px;
+        }
+
+        .section-copy {
+          font-size: 16px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation: none !important;
+          transition: none !important;
+          scroll-behavior: auto !important;
+        }
+
+        .reveal {
+          opacity: 1;
+          transform: none;
+          filter: none;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- =========================================================
+         NAVBAR HTML
+    ========================================================== -->
+    <header class="nav" id="siteNav">
+      <div class="container nav-inner">
+        <a class="brand" href="#top" aria-label="Krignal home">
+          <span class="brand-mark">K</span>
+          <span>Krignal</span>
+        </a>
+
+        <nav class="nav-links" aria-label="Primary navigation">
+          <a href="#manifesto">The Network</a>
+          <a href="#benefits">Benefits</a>
+          <a href="#tv">Krignal TV</a>
+          <a href="#events">Events</a>
+          <a href="#ai">Krignal AI</a>
+          <a href="#faq">FAQ</a>
+        </nav>
+
+        <a class="nav-cta" href="#membership">Apply for membership ↗</a>
+
+        <button
+          class="menu-btn"
+          type="button"
+          aria-label="Open navigation menu"
+          aria-expanded="false"
+        >
+          <span></span><span></span>
+        </button>
+      </div>
+
+      <div class="mobile-panel" aria-hidden="true">
+        <div class="mobile-panel-inner">
+          <a href="#manifesto">The Network</a>
+          <a href="#benefits">Benefits</a>
+          <a href="#tv">Krignal TV</a>
+          <a href="#events">Events</a>
+          <a href="#ai">Krignal AI</a>
+          <a href="#faq">FAQ</a>
+          <a class="mobile-apply" href="#membership">Apply for membership ↗</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- NAVBAR CSS -->
+    <style>
+      .nav {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        height: var(--nav-height);
+        background: rgba(6, 6, 6, 0.88);
+        border-bottom: 1px solid var(--line);
+        backdrop-filter: blur(18px);
+      }
+
+      .nav-inner {
+        height: 100%;
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        align-items: center;
+        gap: 36px;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 20px;
+        font-weight: 700;
+      }
+
+      .brand-mark {
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        background: var(--yellow);
+        color: var(--black);
+        font: 400 28px/1 var(--serif);
+      }
+
+      .nav-links {
+        display: flex;
+        justify-content: center;
+        gap: 28px;
+      }
+
+      .nav-links a {
+        position: relative;
+        padding: 29px 0;
+        color: #bbb9b1;
+        font: 500 9px/1 var(--mono);
+        letter-spacing: 0.11em;
+        text-transform: uppercase;
+      }
+
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 100%;
+        bottom: 21px;
+        height: 1px;
+        background: var(--yellow);
+        transition: right 0.25s ease;
+      }
+
+      .nav-links a:hover {
+        color: var(--white);
+      }
+
+      .nav-links a:hover::after {
+        right: 0;
+      }
+
+      .nav-cta {
+        padding: 14px 18px;
+        border-radius: 999px;
+        background: var(--yellow);
+        color: var(--black);
+        font: 500 9px/1 var(--mono);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .menu-btn {
+        display: none;
+        width: 44px;
+        height: 44px;
+        border: 1px solid var(--line);
+        border-radius: 50%;
+        background: transparent;
+        cursor: pointer;
+      }
+
+      .menu-btn span {
+        position: absolute;
+        width: 17px;
+        height: 1px;
+        background: var(--white);
+        transition: 0.25s ease;
+      }
+
+      .menu-btn span:first-child {
+        transform: translateY(-4px);
+      }
+
+      .menu-btn span:last-child {
+        transform: translateY(4px);
+      }
+
+      .menu-btn.open span:first-child {
+        transform: rotate(45deg);
+      }
+
+      .menu-btn.open span:last-child {
+        transform: rotate(-45deg);
+      }
+
+      .mobile-panel {
+        position: fixed;
+        inset: var(--nav-height) 0 auto;
+        max-height: 0;
+        overflow: hidden;
+        background: var(--black);
+        border-bottom: 1px solid var(--line);
+        transition: max-height 0.35s ease;
+      }
+
+      .mobile-panel.open {
+        max-height: calc(100vh - var(--nav-height));
+      }
+
+      .mobile-panel-inner {
+        padding: 18px 24px 28px;
+      }
+
+      .mobile-panel a {
+        display: block;
+        padding: 17px 0;
+        border-bottom: 1px solid var(--line);
+        font: 500 11px/1 var(--mono);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .mobile-panel .mobile-apply {
+        margin-top: 18px;
+        padding: 16px 18px;
+        border: 0;
+        border-radius: 999px;
+        background: var(--yellow);
+        color: var(--black);
+        text-align: center;
+      }
+
+      @media (max-width: 1120px) {
+        .nav-links,
+        .nav-cta {
+          display: none;
+        }
+
+        .nav-inner {
+          grid-template-columns: auto 1fr auto;
+        }
+
+        .menu-btn {
+          position: relative;
+          display: grid;
+          place-items: center;
+          justify-self: end;
+        }
+      }
+
+      @media (max-width: 700px) {
+        .brand-mark {
+          width: 38px;
+          height: 38px;
+          font-size: 25px;
+        }
+      }
+    </style>
+
+    <main>
+      <!-- =========================================================
+           SECTION 1 HTML — HERO IMAGE STACK
+      ========================================================== -->
+      <section class="hero-stack" id="top">
+        <div class="hero-sticky" id="heroSticky">
+          <div class="hero-gallery" id="heroGallery">
+            <figure
+              class="hero-card hero-card-lg"
+              data-x="10"
+              data-y="14"
+              data-r="-2.2"
+              data-s="0.78"
+              data-z="12"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1000&q=86"
+                alt="Business team collaborating"
+              />
+              <figcaption>People / Collaboration</figcaption>
+            </figure>
+
+            <figure
+              class="hero-card hero-card-sm"
+              data-x="28"
+              data-y="13"
+              data-r="1.4"
+              data-s="0.73"
+              data-z="11"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=900&q=86"
+                alt="Founders working together"
+              />
+              <figcaption>Founders / Progress</figcaption>
+            </figure>
+
+            <figure
+              class="hero-card hero-card-md"
+              data-x="46"
+              data-y="15"
+              data-r="-1.0"
+              data-s="0.7"
+              data-z="10"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1000&q=86"
+                alt="Curated business event"
+              />
+              <figcaption>Rooms / Trust</figcaption>
+            </figure>
+
+            <figure
+              class="hero-card hero-card-tall"
+              data-x="72"
+              data-y="13"
+              data-r="1.2"
+              data-s="0.66"
+              data-z="9"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=900&q=86"
+                alt="Business leader portrait"
+              />
+              <figcaption>Leaders / Identity</figcaption>
+            </figure>
+
+            <figure
+              class="hero-card hero-card-md"
+              data-x="8"
+              data-y="46"
+              data-r="-1.4"
+              data-s="0.74"
+              data-z="8"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1000&q=86"
+                alt="Startup team in discussion"
+              />
+              <figcaption>Stories / Visibility</figcaption>
+            </figure>
+
+            <figure
+              class="hero-card hero-card-sm"
+              data-x="29"
+              data-y="47"
+              data-r="1.0"
+              data-s="0.72"
+              data-z="7"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=900&q=86"
+                alt="Business conversation"
+              />
+              <figcaption>Conversations / Context</figcaption>
+            </figure>
+
+            <figure
+              class="hero-card hero-card-sm"
+              data-x="48"
+              data-y="50"
+              data-r="-0.8"
+              data-s="0.68"
+              data-z="6"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=900&q=86"
+                alt="Members meeting around a table"
+              />
+              <figcaption>Members / Exchange</figcaption>
+            </figure>
+
+            <figure
+              class="hero-card hero-card-wide"
+              data-x="94"
+              data-y="48"
+              data-r="1.3"
+              data-s="0.65"
+              data-z="5"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1100&q=86"
+                alt="Business presentation"
+              />
+              <figcaption>Ideas / Signal</figcaption>
+            </figure>
+
+            <figure
+              class="hero-card hero-card-md"
+              data-x="10"
+              data-y="86"
+              data-r="1.1"
+              data-s="0.72"
+              data-z="4"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1000&q=86"
+                alt="Professional business meeting"
+              />
+              <figcaption>Opportunity / Access</figcaption>
+            </figure>
+
+            <figure
+              class="hero-card hero-card-sm"
+              data-x="31"
+              data-y="87"
+              data-r="-1.0"
+              data-s="0.69"
+              data-z="3"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=900&q=86"
+                alt="Interview and storytelling session"
+              />
+              <figcaption>Media / Recognition</figcaption>
+            </figure>
+
+            <figure
+              class="hero-card hero-card-tall"
+              data-x="52"
+              data-y="86"
+              data-r="0.9"
+              data-s="0.66"
+              data-z="2"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=900&q=86"
+                alt="Founder portrait"
+              />
+              <figcaption>Profiles / Relevance</figcaption>
+            </figure>
+
+            <figure
+              class="hero-card hero-card-sm"
+              data-x="80"
+              data-y="87"
+              data-r="-1.1"
+              data-s="0.63"
+              data-z="1"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=900&q=86"
+                alt="Creative professional team"
+              />
+              <figcaption>Network / Growth</figcaption>
+            </figure>
+          </div>
+
+          <aside class="hero-final" id="heroFinal">
+            <div class="hero-final-shade"></div>
+            <div class="hero-final-content">
+              <div class="hero-kicker mono">
+                <span>India ↔ The World</span>
+                <i></i>
+                <span>Curated Business Network</span>
+              </div>
+
+              <h1>
+                The right people should not be hard to
+                <span>find.</span>
+              </h1>
+
+              <p>
+                Krignal helps ambitious people become visible, enter meaningful
+                rooms and stay connected to opportunities through stories,
+                curated events and intelligent matching.
+              </p>
+
+              <div class="hero-actions">
+                <a class="hero-btn" href="#manifesto">Discover Krignal ↘</a>
+                <a class="hero-link" href="#membership"
+                  >Membership by application</a
+                >
+              </div>
+
+              <!-- <div class="hero-signals">
+                <a href="#tv">
+                  <b>01</b>
+                  <span><strong>Krignal TV</strong>Stories create familiarity.</span>
+                  <i>↗</i>
+                </a>
+                <a href="#events">
+                  <b>02</b>
+                  <span><strong>Curated Events</strong>Rooms create trust.</span>
+                  <i>↗</i>
+                </a>
+                <a href="#ai">
+                  <b>03</b>
+                  <span><strong>Krignal AI</strong>Context creates opportunity.</span>
+                  <i>↗</i>
+                </a>
+              </div> -->
+            </div>
+          </aside>
+
+          <div class="hero-scroll-note mono" id="heroScrollNote">
+            Scroll to arrange the network
+          </div>
+
+          <div class="hero-progress" aria-hidden="true">
+            <span id="heroProgressBar"></span>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 1 CSS — HERO IMAGE STACK -->
+      <style>
+        .hero-stack {
+          height: 270vh;
+          position: relative;
+          background:
+            radial-gradient(circle at 34% 35%, rgba(0, 0, 0, 0.055), transparent 30%),
+            #f4f2ed;
+        }
+
+        .hero-sticky {
+          position: sticky;
+          top: var(--nav-height);
+          height: calc(100vh - var(--nav-height));
+          overflow: hidden;
+          background: #f4f2ed;
+          isolation: isolate;
+        }
+
+        .hero-gallery {
+          position: absolute;
+          inset: 0;
+          z-index: 2;
+          transform-origin: center;
+          will-change: transform;
+        }
+
+        .hero-gallery::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          background-image:
+            linear-gradient(rgba(0, 0, 0, 0.032) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(0, 0, 0, 0.032) 1px, transparent 1px);
+          background-size: 56px 56px;
+          mask-image: linear-gradient(90deg, #000 0 72%, transparent 94%);
+          pointer-events: none;
+        }
+
+        .hero-card {
+          position: absolute;
+          left: 43%;
+          top: 52%;
+          width: clamp(165px, 17vw, 310px);
+          aspect-ratio: 1.18 / 1;
+          overflow: hidden;
+          border: 1px solid rgba(0, 0, 0, 0.08);
+          border-radius: clamp(16px, 1.8vw, 30px);
+          background: #d7d4ce;
+          box-shadow:
+            0 22px 48px rgba(0, 0, 0, 0.15),
+            0 4px 12px rgba(0, 0, 0, 0.08);
+          opacity: 0;
+          transform: translate(-50%, -50%) scale(0.94);
+          transform-origin: center;
+          will-change: left, top, transform;
+        }
+
+        .hero-card img {
+          filter: grayscale(1) contrast(1.06);
+          transition: filter 0.35s ease, transform 0.8s ease;
+        }
+
+        .hero-card:hover img {
+          filter: grayscale(0.1) contrast(1.02);
+          transform: scale(1.035);
+        }
+
+        .hero-card figcaption {
+          position: absolute;
+          left: 11px;
+          bottom: 11px;
+          padding: 7px 9px;
+          border-radius: 999px;
+          background: rgba(6, 6, 6, 0.78);
+          color: var(--white);
+          backdrop-filter: blur(8px);
+          font: 500 7px/1 var(--mono);
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+        }
+
+        .hero-card-sm {
+          width: clamp(135px, 13vw, 235px);
+          aspect-ratio: 1.05 / 1;
+        }
+
+        .hero-card-md {
+          width: clamp(160px, 16vw, 285px);
+        }
+
+        .hero-card-lg {
+          width: clamp(205px, 20vw, 355px);
+          aspect-ratio: 1.35 / 1;
+        }
+
+        .hero-card-wide {
+          width: clamp(205px, 19vw, 345px);
+          aspect-ratio: 1.55 / 1;
+        }
+
+        .hero-card-tall {
+          width: clamp(130px, 13.5vw, 245px);
+          aspect-ratio: 0.78 / 1;
+        }
+
+        .hero-final {
+          position: absolute;
+          right: 2.7vw;
+          top: 7%;
+          width: min(40vw, 680px);
+          height: 86%;
+          z-index: 40;
+          overflow: hidden;
+          border-radius: clamp(20px, 2vw, 34px);
+          box-shadow: 0 30px 90px rgba(0, 0, 0, 0.24);
+          opacity: 0;
+          clip-path: inset(0 0 0 100% round 28px);
+          background-image: url("https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1500&q=88");
+          background-size: cover;
+          background-position: center;
+          will-change: clip-path, opacity, transform;
+        }
+
+        .hero-final-shade {
+          position: absolute;
+          inset: 0;
+          background:
+            linear-gradient(90deg, rgba(6, 6, 6, 0.97), rgba(6, 6, 6, 0.83) 56%, rgba(6, 6, 6, 0.58)),
+            linear-gradient(180deg, rgba(6, 6, 6, 0.08), rgba(6, 6, 6, 0.91));
+        }
+
+        .hero-final-content {
+          position: relative;
+          z-index: 2;
+          min-height: 100%;
+          padding: clamp(28px, 3.5vh, 42px) clamp(25px, 3vw, 48px);
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          overflow: hidden;
+        }
+
+        .hero-kicker {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          margin-bottom: 15px;
+          color: #d6d3cb;
+          font-size: 8px;
+        }
+
+        .hero-kicker i {
+          width: 42px;
+          height: 1px;
+          background: var(--yellow);
+        }
+
+        .hero-final h1 {
+          max-width: 7.5ch;
+          font: 400 clamp(42px, 3.35vw, 57px) / 0.86 var(--serif);
+          letter-spacing: -0.055em;
+        }
+
+        .hero-final h1 span {
+          color: var(--yellow);
+        }
+
+        .hero-final-content > p {
+          max-width: 520px;
+          margin-top: 16px;
+          color: #c6c3ba;
+          font-size: 14px;
+          line-height: 1.55;
+        }
+
+        .hero-actions {
+          position: relative;
+          z-index: 6;
+          display: flex;
+          align-items: center;
+          gap: 14px;
+          margin-top: 22px;
+          flex-wrap: wrap;
+        }
+
+        .hero-btn {
+          min-height: 44px;
+          width: fit-content;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          padding: 13px 19px;
+          border-radius: 999px;
+          background: var(--yellow);
+          color: var(--black);
+          white-space: nowrap;
+          box-shadow: 0 8px 28px rgba(237, 199, 90, 0.18);
+          font: 500 8px/1 var(--mono);
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+        }
+
+        .hero-link {
+          min-height: 34px;
+          display: inline-flex;
+          align-items: center;
+          padding-bottom: 5px;
+          white-space: nowrap;
+          border-bottom: 1px solid var(--line);
+          color: #bdbab1;
+          font: 500 8px/1 var(--mono);
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+        }
+
+        .hero-signals {
+          width: min(100%, 500px);
+          margin-top: 18px;
+          border: 1px solid rgba(255, 255, 255, 0.17);
+          background: rgba(6, 6, 6, 0.62);
+          backdrop-filter: blur(12px);
+        }
+
+        .hero-signals a {
+          min-height: 48px;
+          display: grid;
+          grid-template-columns: 34px 1fr 18px;
+          gap: 10px;
+          align-items: center;
+          padding: 8px 12px;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .hero-signals a:last-child {
+          border-bottom: 0;
+        }
+
+        .hero-signals b {
+          color: var(--yellow);
+          font: 400 20px/1 var(--serif);
+        }
+
+        .hero-signals span {
+          color: #aaa79f;
+          font-size: 9px;
+          line-height: 1.35;
+        }
+
+        .hero-signals strong {
+          display: block;
+          margin-bottom: 2px;
+          color: var(--white);
+          font-size: 11px;
+        }
+
+        .hero-signals i {
+          font-style: normal;
+        }
+
+        .hero-scroll-note {
+          position: absolute;
+          left: 20px;
+          bottom: 25px;
+          z-index: 50;
+          color: rgba(0, 0, 0, 0.58);
+          writing-mode: vertical-rl;
+          transform: rotate(180deg);
+        }
+
+        .hero-progress {
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          z-index: 55;
+          height: 4px;
+          background: rgba(0, 0, 0, 0.08);
+        }
+
+        .hero-progress span {
+          display: block;
+          width: 0;
+          height: 100%;
+          background: var(--yellow);
+        }
+
+        @media (max-width: 1100px) {
+          .hero-stack {
+            height: 245vh;
+          }
+
+          .hero-card figcaption {
+            display: none;
+          }
+
+          .hero-final {
+            right: 2.5vw;
+            top: 8%;
+            width: 47vw;
+            height: 84%;
+          }
+        }
+
+        @media (max-width: 760px) {
+          .hero-stack {
+            height: 225vh;
+          }
+
+          .hero-sticky {
+            height: calc(100svh - var(--nav-height));
+          }
+
+          .hero-gallery::before {
+            background-size: 34px 34px;
+            mask-image: linear-gradient(180deg, #000 0 72%, transparent 100%);
+          }
+
+          .hero-card,
+          .hero-card-sm,
+          .hero-card-md,
+          .hero-card-lg,
+          .hero-card-wide,
+          .hero-card-tall {
+            width: clamp(104px, 31vw, 162px);
+            aspect-ratio: 1.06 / 1;
+            border-radius: 16px;
+          }
+
+          .hero-final {
+            left: 4vw;
+            right: 4vw;
+            top: auto;
+            bottom: 5%;
+            width: auto;
+            height: 64%;
+            clip-path: inset(100% 0 0 0 round 22px);
+          }
+
+          .hero-final-content {
+            justify-content: flex-end;
+            padding: 30px 20px 22px;
+          }
+
+          .hero-final h1 {
+            font-size: clamp(43px, 12vw, 62px);
+          }
+
+          .hero-final-content > p {
+            font-size: 13px;
+          }
+
+          .hero-actions {
+            gap: 10px;
+          }
+
+          .hero-btn {
+            min-height: 42px;
+            padding-inline: 16px;
+          }
+
+          .hero-signals {
+            display: none;
+          }
+
+          .hero-scroll-note {
+            left: 9px;
+            bottom: 18px;
+            font-size: 7px;
+          }
+        }
+      </style>
+
+      <!-- =========================================================
+           SECTION 2 HTML — MANIFESTO
+      ========================================================== -->
+      <section class="manifesto" id="manifesto">
+        <div class="container">
+          <article class="manifesto-row reveal">
+            <span class="manifesto-no">01</span>
+            <div class="manifesto-copy">
+              <div class="section-label mono">Discover</div>
+              <h2>Become known.</h2>
+              <p>
+                Krignal TV makes founders, companies, journeys and useful ideas
+                visible through sharp business storytelling.
+              </p>
+            </div>
+            <div class="manifesto-visual">
+              <img
+                loading="lazy"
+                src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=900&q=85"
+                alt="Business conversation"
+              />
+              <span class="manifesto-arrow">↗</span>
+            </div>
+          </article>
+
+          <article class="manifesto-row reveal">
+            <span class="manifesto-no">02</span>
+            <div class="manifesto-copy">
+              <div class="section-label mono manifesto-dark-label">Meet</div>
+              <h2>Enter the right room.</h2>
+              <p>
+                Industry-specific events bring the right people together with
+                context, purpose and a reason to continue the conversation.
+              </p>
+            </div>
+            <div class="manifesto-visual">
+              <img
+                loading="lazy"
+                src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=900&q=85"
+                alt="Business event"
+              />
+              <span class="manifesto-arrow">↗</span>
+            </div>
+          </article>
+
+          <article class="manifesto-row reveal">
+            <span class="manifesto-no">03</span>
+            <div class="manifesto-copy">
+              <div class="section-label mono">Connect</div>
+              <h2>Stay relevant.</h2>
+              <p>
+                Your AI twin keeps understanding your intent and matching you to
+                useful people, even when you are not actively searching.
+              </p>
+            </div>
+            <div class="manifesto-visual">
+              <img
+                loading="lazy"
+                src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=85"
+                alt="AI-enabled networking"
+              />
+              <span class="manifesto-arrow">↗</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- SECTION 2 CSS — MANIFESTO -->
+      <style>
+        .manifesto {
+          position: relative;
+          scroll-margin-top: var(--nav-height);
+          padding: 0;
+          background: var(--white);
+          color: var(--black);
+        }
+
+        .manifesto > .container {
+          min-height: calc(100svh - var(--nav-height));
+          display: grid;
+          grid-template-rows: repeat(3, minmax(0, 1fr));
+        }
+
+        .manifesto-row {
+          min-height: 0;
+          position: relative;
+          display: grid;
+          grid-template-columns: 92px minmax(0, 1fr) minmax(210px, 285px);
+          gap: 24px;
+          align-items: center;
+          overflow: hidden;
+          padding: 11px 0;
+          border-bottom: 1px solid var(--dark-line);
+        }
+
+        .manifesto-row:first-child {
+          border-top: 1px solid var(--dark-line);
+        }
+
+        .manifesto-row:nth-child(2) {
+          background: var(--yellow);
+          box-shadow: 0 0 0 100vmax var(--yellow);
+          clip-path: inset(0 -100vmax);
+        }
+
+        .manifesto-no {
+          color: transparent;
+          font: 400 clamp(44px, 5vw, 68px) / 1 var(--serif);
+          -webkit-text-stroke: 1px rgba(0, 0, 0, 0.34);
+        }
+
+        .manifesto-copy .section-label {
+          margin-bottom: 7px;
+          font-size: 8px;
+        }
+
+        .manifesto-copy h2 {
+          font: 400 clamp(38px, 4.9vw, 72px) / 0.9 var(--serif);
+          letter-spacing: -0.045em;
+        }
+
+        .manifesto-copy p {
+          max-width: 620px;
+          margin-top: 8px;
+          color: #55534d;
+          font-size: 13px;
+          line-height: 1.48;
+        }
+
+        .manifesto-row:nth-child(2) .manifesto-copy p {
+          color: #4b421f;
+        }
+
+        .manifesto-dark-label {
+          color: #4c3f00;
+        }
+
+        .manifesto-visual {
+          height: min(19vh, 155px);
+          min-height: 112px;
+          position: relative;
+          overflow: hidden;
+          border-radius: 16px;
+        }
+
+        .manifesto-visual img {
+          filter: grayscale(1) contrast(1.05);
+          transition: transform 0.65s ease;
+        }
+
+        .manifesto-row:hover .manifesto-visual img {
+          transform: scale(1.045);
+        }
+
+        .manifesto-visual::after {
+          content: "";
+          position: absolute;
+          inset: 0;
+          border: 1px solid var(--dark-line);
+          border-radius: inherit;
+          pointer-events: none;
+        }
+
+        .manifesto-arrow {
+          position: absolute;
+          right: 12px;
+          top: 12px;
+          width: 36px;
+          height: 36px;
+          display: grid;
+          place-items: center;
+          border: 1px solid rgba(0, 0, 0, 0.3);
+          border-radius: 50%;
+          background: rgba(246, 243, 234, 0.76);
+        }
+
+        @media (max-width: 1050px) {
+          .manifesto > .container {
+            min-height: 0;
+            display: block;
+          }
+
+          .manifesto-row {
+            min-height: 245px;
+            grid-template-columns: 72px minmax(0, 1fr) 220px;
+            padding: 20px 0;
+          }
+
+          .manifesto-visual {
+            height: 180px;
+          }
+        }
+
+        @media (max-width: 700px) {
+          .manifesto-row {
+            min-height: 0;
+            grid-template-columns: 52px 1fr;
+            gap: 13px;
+            padding: 24px 0;
+          }
+
+          .manifesto-no {
+            font-size: 42px;
+          }
+
+          .manifesto-copy h2 {
+            font-size: 42px;
+          }
+
+          .manifesto-copy p {
+            font-size: 13px;
+          }
+
+          .manifesto-visual {
+            grid-column: 1 / -1;
+            height: 150px;
+            min-height: 0;
+          }
+        }
+      </style>
+
+  
+
+      <!-- =========================================================
+           SECTION 4 HTML — FIVE WAYS / TAB CAROUSELS
+      ========================================================== -->
+      <section class="section tv" id="tv">
+        <div class="container">
+          <div class="tv-head reveal">
+            <div>
+              <div class="section-label mono">Krignal TV</div>
+              <h2 class="section-title">
+                Five ways to<br />know the <span class="yellow">people.</span>
+              </h2>
+            </div>
+            <p class="section-copy">
+              Select a story format. Every tab has its own image carousel with
+              left and right controls, and it automatically moves every three
+              seconds.
+            </p>
+          </div>
+
+          <div class="tv-console reveal" id="tvConsole">
+            <div class="tv-index" role="tablist" aria-label="Krignal TV formats">
+              <button class="active" data-tv="brand" role="tab" aria-selected="true">
+                <span class="num">01</span>
+                <span class="tv-tab-copy">
+                  <strong>Brand Stories</strong>
+                  <small>The thinking and people behind companies.</small>
+                </span>
+                <span class="arrow">↗</span>
+              </button>
+
+              <button data-tv="journey" role="tab" aria-selected="false">
+                <span class="num">02</span>
+                <span class="tv-tab-copy">
+                  <strong>Journeys That Inspire</strong>
+                  <small>Honest stories of risk, resilience and progress.</small>
+                </span>
+                <span class="arrow">↗</span>
+              </button>
+
+              <button data-tv="know" role="tab" aria-selected="false">
+                <span class="num">03</span>
+                <span class="tv-tab-copy">
+                  <strong>Get to Know</strong>
+                  <small>Meet the person behind the title and work.</small>
+                </span>
+                <span class="arrow">↗</span>
+              </button>
+
+              <button data-tv="person" role="tab" aria-selected="false">
+                <span class="num">04</span>
+                <span class="tv-tab-copy">
+                  <strong>Find Your Person</strong>
+                  <small>Connections that unlock collaboration and growth.</small>
+                </span>
+                <span class="arrow">↗</span>
+              </button>
+
+              <button data-tv="insights" role="tab" aria-selected="false">
+                <span class="num">05</span>
+                <span class="tv-tab-copy">
+                  <strong>Week’s Insights</strong>
+                  <small>The shifts business leaders should notice.</small>
+                </span>
+                <span class="arrow">↗</span>
+              </button>
+            </div>
+
+            <div class="tv-stage">
+              <article class="tv-panel active" id="brand" data-index="0">
+                <div class="tv-slides">
+                  <div class="tv-slide">
+                    <img
+                      loading="eager"
+                      src="https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=1400&q=86"
+                      alt="Brand story interview"
+                    />
+                  </div>
+                  <div class="tv-slide">
+                    <img
+                      loading="eager"
+                      src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1400&q=86"
+                      alt="Business team discussing a brand"
+                    />
+                  </div>
+                  <div class="tv-slide">
+                    <img
+                      loading="eager"
+                      src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1400&q=86"
+                      alt="People behind a growing company"
+                    />
+                  </div>
+                </div>
+                <div class="tv-panel-overlay"></div>
+                <div class="tv-panel-content">
+                  <span class="mono">01 / Identity</span>
+                  <h3>Brand Stories</h3>
+                  <p>
+                    Meaningful films that show what a company stands for, how it
+                    was built and why people should remember it.
+                  </p>
+                </div>
+                <div class="tv-carousel-controls">
+                  <button class="tv-arrow tv-prev" type="button" aria-label="Previous image">←</button>
+                  <div class="tv-dots" aria-label="Brand Stories slides"></div>
+                  <button class="tv-arrow tv-next" type="button" aria-label="Next image">→</button>
+                </div>
+              </article>
+
+              <article class="tv-panel" id="journey" data-index="0">
+                <div class="tv-slides">
+                  <div class="tv-slide">
+                    <img
+                      loading="eager"
+                      src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1400&q=86"
+                      alt="Founder journey discussion"
+                    />
+                  </div>
+                  <div class="tv-slide">
+                    <img
+                      loading="eager"
+                      src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1400&q=86"
+                      alt="Company growth journey"
+                    />
+                  </div>
+                  <div class="tv-slide">
+                    <img
+                      loading="eager"
+                      src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1400&q=86"
+                      alt="Team reflecting on progress"
+                    />
+                  </div>
+                </div>
+                <div class="tv-panel-overlay"></div>
+                <div class="tv-panel-content">
+                  <span class="mono">02 / Journey</span>
+                  <h3>Journeys That Inspire</h3>
+                  <p>
+                    Honest conversations about difficult decisions, unseen
+                    failures and the long road behind visible success.
+                  </p>
+                </div>
+                <div class="tv-carousel-controls">
+                  <button class="tv-arrow tv-prev" type="button" aria-label="Previous image">←</button>
+                  <div class="tv-dots" aria-label="Journeys That Inspire slides"></div>
+                  <button class="tv-arrow tv-next" type="button" aria-label="Next image">→</button>
+                </div>
+              </article>
+
+              <article class="tv-panel" id="know" data-index="0">
+                <div class="tv-slides">
+                  <div class="tv-slide">
+                    <img
+                      loading="eager"
+                      src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=1400&q=86"
+                      alt="Business leader portrait"
+                    />
+                  </div>
+                  <div class="tv-slide">
+                    <img
+                      loading="eager"
+                      src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=1400&q=86"
+                      alt="Founder profile portrait"
+                    />
+                  </div>
+                  <div class="tv-slide">
+                    <img
+                      loading="eager"
+                      src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1400&q=86"
+                      alt="Leader speaking with a team"
+                    />
+                  </div>
+                </div>
+                <div class="tv-panel-overlay"></div>
+                <div class="tv-panel-content">
+                  <span class="mono">03 / Personality</span>
+                  <h3>Get to Know</h3>
+                  <p>
+                    Profiles that move beyond job titles and reveal the values,
+                    interests and personality behind the work.
+                  </p>
+                </div>
+                <div class="tv-carousel-controls">
+                  <button class="tv-arrow tv-prev" type="button" aria-label="Previous image">←</button>
+                  <div class="tv-dots" aria-label="Get to Know slides"></div>
+                  <button class="tv-arrow tv-next" type="button" aria-label="Next image">→</button>
+                </div>
+              </article>
+
+              <article class="tv-panel" id="person" data-index="0">
+                <div class="tv-slides">
+                  <div class="tv-slide">
+                    <img
+                      loading="eager"
+                      src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1400&q=86"
+                      alt="Business collaboration"
+                    />
+                  </div>
+                  <div class="tv-slide">
+                    <img
+                      loading="eager"
+                      src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1400&q=86"
+                      alt="Team members making a connection"
+                    />
+                  </div>
+                  <div class="tv-slide">
+                    <img
+                      loading="eager"
+                      src="https://images.unsplash.com/photo-1515169067868-5387ec356754?auto=format&fit=crop&w=1400&q=86"
+                      alt="Professional introduction"
+                    />
+                  </div>
+                </div>
+                <div class="tv-panel-overlay"></div>
+                <div class="tv-panel-content">
+                  <span class="mono">04 / Connection</span>
+                  <h3>Find Your Person</h3>
+                  <p>
+                    Stories and introductions that help members discover the
+                    collaborator, mentor, customer or partner they need.
+                  </p>
+                </div>
+                <div class="tv-carousel-controls">
+                  <button class="tv-arrow tv-prev" type="button" aria-label="Previous image">←</button>
+                  <div class="tv-dots" aria-label="Find Your Person slides"></div>
+                  <button class="tv-arrow tv-next" type="button" aria-label="Next image">→</button>
+                </div>
+              </article>
+
+              <article class="tv-panel" id="insights" data-index="0">
+                <div class="tv-slides">
+                  <div class="tv-slide">
+                    <img
+                      loading="eager"
+                      src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1400&q=86"
+                      alt="Weekly business insights"
+                    />
+                  </div>
+                  <div class="tv-slide">
+                    <img
+                      loading="eager"
+                      src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1400&q=86"
+                      alt="Business data and signals"
+                    />
+                  </div>
+                  <div class="tv-slide">
+                    <img
+                      loading="eager"
+                      src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?auto=format&fit=crop&w=1400&q=86"
+                      alt="Leadership discussion and market trends"
+                    />
+                  </div>
+                </div>
+                <div class="tv-panel-overlay"></div>
+                <div class="tv-panel-content">
+                  <span class="mono">05 / Intelligence</span>
+                  <h3>Week’s Insights</h3>
+                  <p>
+                    A concise weekly signal covering ideas, opportunities and
+                    conversations business leaders should not miss.
+                  </p>
+                </div>
+                <div class="tv-carousel-controls">
+                  <button class="tv-arrow tv-prev" type="button" aria-label="Previous image">←</button>
+                  <div class="tv-dots" aria-label="Week’s Insights slides"></div>
+                  <button class="tv-arrow tv-next" type="button" aria-label="Next image">→</button>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 4 CSS — TAB CAROUSELS -->
+      <style>
+        .tv {
+          overflow: hidden;
+          background: var(--black);
+        }
+
+        .tv-head {
+          display: grid;
+          grid-template-columns: 1fr 0.8fr;
+          gap: 60px;
+          align-items: end;
+          margin-bottom: 70px;
+        }
+
+        .tv-console {
+          min-height: 700px;
+          display: grid;
+          grid-template-columns: 0.82fr 1.18fr;
+          border: 1px solid var(--line);
+          background: var(--black-2);
+        }
+
+        .tv-index {
+          display: flex;
+          flex-direction: column;
+          border-right: 1px solid var(--line);
+        }
+
+        .tv-index button {
+          flex: 1;
+          min-height: 120px;
+          display: grid;
+          grid-template-columns: 56px 1fr auto;
+          gap: 17px;
+          align-items: center;
+          padding: 22px 26px;
+          border: 0;
+          border-bottom: 1px solid var(--line);
+          background: transparent;
+          color: var(--white);
+          text-align: left;
+          cursor: pointer;
+          transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        .tv-index button:last-child {
+          border-bottom: 0;
+        }
+
+        .tv-index button.active {
+          background: var(--yellow);
+          color: var(--black);
+        }
+
+        .tv-index .num {
+          font: 400 30px/1 var(--serif);
+        }
+
+        .tv-tab-copy strong {
+          display: block;
+          margin-bottom: 7px;
+          font: 400 29px/1 var(--serif);
+        }
+
+        .tv-tab-copy small {
+          display: block;
+          color: var(--grey);
+          font-size: 12px;
+          line-height: 1.45;
+        }
+
+        .tv-index button.active .tv-tab-copy small {
+          color: #54491c;
+        }
+
+        .tv-index .arrow {
+          font-size: 18px;
+        }
+
+        .tv-stage {
+          min-width: 0;
+          position: relative;
+          overflow: hidden;
+          background: #121212;
+        }
+
+        .tv-panel {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          opacity: 0;
+          visibility: hidden;
+          pointer-events: none;
+        }
+
+        .tv-panel.active {
+          opacity: 1;
+          visibility: visible;
+          pointer-events: auto;
+        }
+
+        .tv-slides {
+          height: 100%;
+          display: flex;
+          transition: transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+          will-change: transform;
+        }
+
+        .tv-slides.no-transition {
+          transition: none !important;
+        }
+
+        .tv-slide {
+          flex: 0 0 100%;
+          min-width: 100%;
+          height: 100%;
+          overflow: hidden;
+          background:
+            radial-gradient(circle at 72% 24%, rgba(237,199,90,.18), transparent 28%),
+            linear-gradient(135deg, #28231b, #111317 62%, #1c1a16);
+        }
+
+        .tv-slide img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          opacity: 1;
+          background: transparent;
+          filter: grayscale(1) contrast(1.08);
+        }
+
+        .tv-slide img.is-missing {
+          opacity: 0;
+        }
+
+        .tv-panel-overlay {
+          position: absolute;
+          inset: 0;
+          background:
+            linear-gradient(180deg, rgba(0, 0, 0, 0.02) 24%, rgba(0, 0, 0, 0.9)),
+            linear-gradient(90deg, rgba(0, 0, 0, 0.1), transparent 60%);
+          pointer-events: none;
+        }
+
+        .tv-panel-content {
+          position: absolute;
+          left: 42px;
+          right: 110px;
+          bottom: 42px;
+          z-index: 3;
+        }
+
+        .tv-panel-content > span {
+          color: var(--yellow);
+        }
+
+        .tv-panel-content h3 {
+          max-width: 9ch;
+          margin-top: 11px;
+          font: 400 clamp(48px, 5vw, 84px) / 0.9 var(--serif);
+          letter-spacing: -0.04em;
+        }
+
+        .tv-panel-content p {
+          max-width: 600px;
+          margin-top: 15px;
+          color: #bebbb3;
+          line-height: 1.65;
+        }
+
+        .tv-carousel-controls {
+          position: absolute;
+          right: 24px;
+          top: 24px;
+          z-index: 5;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          padding: 8px;
+          border: 1px solid rgba(255, 255, 255, 0.22);
+          border-radius: 999px;
+          background: rgba(6, 6, 6, 0.65);
+          backdrop-filter: blur(10px);
+        }
+
+        .tv-arrow {
+          width: 42px;
+          height: 42px;
+          display: grid;
+          place-items: center;
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          border-radius: 50%;
+          background: transparent;
+          cursor: pointer;
+        }
+
+        .tv-arrow:hover {
+          background: var(--yellow);
+          color: var(--black);
+          border-color: var(--yellow);
+        }
+
+        .tv-dots {
+          display: flex;
+          gap: 6px;
+        }
+
+        .tv-dot {
+          width: 7px;
+          height: 7px;
+          border: 0;
+          border-radius: 50%;
+          background: rgba(255, 255, 255, 0.35);
+          cursor: pointer;
+        }
+
+        .tv-dot.active {
+          background: var(--yellow);
+        }
+
+        @media (max-width: 1050px) {
+          .tv-head,
+          .tv-console {
+            grid-template-columns: 1fr;
+          }
+
+          .tv-head {
+            gap: 24px;
+          }
+
+          .tv-index {
+            border-right: 0;
+            border-bottom: 1px solid var(--line);
+          }
+
+          .tv-index button {
+            min-height: 96px;
+          }
+
+          .tv-stage {
+            min-height: 620px;
+          }
+        }
+
+        @media (max-width: 700px) {
+          .tv-index button {
+            min-height: 84px;
+            grid-template-columns: 38px 1fr auto;
+            padding: 14px;
+          }
+
+          .tv-tab-copy strong {
+            font-size: 22px;
+          }
+
+          .tv-tab-copy small {
+            display: none;
+          }
+
+          .tv-stage {
+            min-height: 530px;
+          }
+
+          .tv-panel-content {
+            left: 22px;
+            right: 22px;
+            bottom: 24px;
+          }
+
+          .tv-panel-content h3 {
+            font-size: 48px;
+          }
+
+          .tv-panel-content p {
+            font-size: 14px;
+          }
+
+          .tv-carousel-controls {
+            top: 14px;
+            right: 14px;
+          }
+
+          .tv-arrow {
+            width: 36px;
+            height: 36px;
+          }
+        }
+      </style>
+
+      <!-- =========================================================
+           SECTION 5 HTML — EDITORIAL EVENTS DASHBOARD
+      ========================================================== -->
+      <section class="section events" id="events">
+        <div class="container events-layout">
+          <aside class="events-sidebar reveal">
+            <div class="events-eyebrow mono"><span></span> Events</div>
+            <h2>Connections<br />that create<br /><em>what’s next.</em></h2>
+            <p>
+              Curated gatherings for founders, investors and operators who
+              believe in building with purpose and scaling with impact.
+            </p>
+
+            <div class="event-switch" role="tablist" aria-label="Event timeline">
+              <button class="active" data-event="upcoming" type="button">Upcoming Events</button>
+              <button data-event="past" type="button">Past Events</button>
+            </div>
+
+            <div class="event-impact-card">
+              <strong>Event Impact</strong>
+              <div class="impact-stat">
+                <span aria-hidden="true">◎</span>
+                <div><b>2,450+</b><small>Attendees</small></div>
+              </div>
+              <div class="impact-stat">
+                <span aria-hidden="true">▦</span>
+                <div><b>320+</b><small>Partner Organisations</small></div>
+              </div>
+              <div class="impact-stat">
+                <span aria-hidden="true">◉</span>
+                <div><b>18</b><small>Cities Worldwide</small></div>
+              </div>
+            </div>
+
+            <a class="host-event-card" href="#membership">
+              <span class="host-star">✦</span>
+              <strong>Host an Event</strong>
+              <p>Bring your community together. We help you host, promote and make an impact.</p>
+              <i>→</i>
+            </a>
+          </aside>
+
+          <div class="events-content reveal" data-delay="1">
+            <div class="event-panel active" id="upcoming">
+              <article class="event-feature-card">
+                <img
+                  loading="eager"
+                  src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=1800&q=88"
+                  alt="Founder speaking at a Krignal summit"
+                />
+                <div class="event-feature-shade"></div>
+                <div class="event-feature-body">
+                  <span class="featured-chip mono">✦ Featured Event</span>
+                  <span class="event-feature-time mono">Jun 24 &nbsp;•&nbsp; 9:00 AM</span>
+                  <h3>Founders Summit<br />2026</h3>
+                  <p>
+                    A focused conference bringing bold founders, investors and
+                    operators together to shape the future of innovation.
+                  </p>
+                  <span class="event-location">⌖ &nbsp; Bengaluru, India</span>
+                  <a href="#membership" aria-label="View Founders Summit">→</a>
+                </div>
+              </article>
+
+              <div class="event-card-grid">
+                <article class="event-list-card">
+                  <div class="event-calendar"><small>JUN</small><b>07</b></div>
+                  <div class="event-list-copy"><span class="event-type type-blue">Circle</span><small>9:30 AM – 11:30 AM</small><h4>Developer Leadership Circle</h4><p>⌖ Mumbai, India</p></div>
+                  <a href="#membership">→</a>
+                </article>
+                <article class="event-list-card">
+                  <div class="event-calendar"><small>JUN</small><b>15</b></div>
+                  <div class="event-list-copy"><span class="event-type type-purple">Workshop</span><small>10:00 AM – 1:00 PM</small><h4>Product Strategy Workshop</h4><p>⌖ Online</p></div>
+                  <a href="#membership">→</a>
+                </article>
+                <article class="event-list-card">
+                  <div class="event-calendar"><small>JUN</small><b>18</b></div>
+                  <div class="event-list-copy"><span class="event-type type-green">Breakfast</span><small>8:30 AM – 10:00 AM</small><h4>Founder–Investor Breakfast</h4><p>⌖ Delhi, India</p></div>
+                  <a href="#membership">→</a>
+                </article>
+                <article class="event-list-card">
+                  <div class="event-calendar"><small>JUN</small><b>27</b></div>
+                  <div class="event-list-copy"><span class="event-type type-orange">Conference</span><small>9:00 AM – 6:00 PM</small><h4>India–GCC Growth Exchange</h4><p>⌖ Dubai, UAE</p></div>
+                  <a href="#membership">→</a>
+                </article>
+              </div>
+
+              <div class="event-community-strip">
+                <div class="community-faces" aria-hidden="true">
+                  <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&q=80" alt="" />
+                  <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=120&q=80" alt="" />
+                  <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=120&q=80" alt="" />
+                  <span>+120</span>
+                </div>
+                <div><strong>Join a community of builders and backers</strong><p>Real conversations. Meaningful connections. Lasting impact.</p></div>
+                <a href="#membership">Become a Member <span>→</span></a>
+              </div>
+            </div>
+
+            <div class="event-panel" id="past">
+              <div class="past-event-grid">
+                <article class="past-event-card"><img src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1000&q=86" alt="Technology Leaders Forum" /><div><span class="mono">Chennai / 2026</span><h3>Technology Leaders Forum</h3><p>72 relevant people in one focused industry room.</p></div></article>
+                <article class="past-event-card"><img src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=1000&q=86" alt="India GCC Business Dinner" /><div><span class="mono">Dubai / 2026</span><h3>India–GCC Business Dinner</h3><p>Operators from India and the Gulf around one table.</p></div></article>
+                <article class="past-event-card"><img src="https://images.unsplash.com/photo-1503428593586-e225b39bddfe?auto=format&fit=crop&w=1000&q=86" alt="Creative Economy Circle" /><div><span class="mono">Bengaluru / 2026</span><h3>Creative Economy Circle</h3><p>A member room for studios, brands and creative founders.</p></div></article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 5 CSS — EDITORIAL EVENTS DASHBOARD -->
+      <style>
+        .events {
+          padding: 76px 0;
+          overflow: hidden;
+          background:
+            radial-gradient(circle at 72% 8%, rgba(237,199,90,.07), transparent 28%),
+            #07111d;
+        }
+
+        .events-layout {
+          display: grid;
+          grid-template-columns: minmax(260px, .31fr) minmax(0, 1fr);
+          gap: 54px;
+          align-items: start;
+        }
+
+        .events-sidebar { padding-top: 26px; }
+        .events-eyebrow { display: flex; align-items: center; gap: 12px; color: var(--yellow); }
+        .events-eyebrow span { width: 10px; height: 10px; border-radius: 50%; background: var(--yellow); }
+        .events-sidebar h2 { margin-top: 34px; font: 400 clamp(48px, 4.2vw, 68px)/.96 var(--serif); letter-spacing: -.035em; }
+        .events-sidebar h2 em { color: var(--yellow); font-weight: 400; }
+        .events-sidebar > p { margin-top: 28px; color: #b7bec8; font-size: 16px; line-height: 1.65; }
+
+        .event-switch { margin-top: 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 4px; padding: 5px; border: 1px solid rgba(255,255,255,.22); border-radius: 999px; }
+        .event-switch button { min-height: 46px; border: 0; border-radius: 999px; background: transparent; color: #c6cbd2; font-weight: 600; cursor: pointer; }
+        .event-switch button.active { background: var(--yellow); color: #11151b; }
+        .event-panel { display: none; }
+        .event-panel.active { display: block; animation: eventPanelIn .35s ease both; }
+        @keyframes eventPanelIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+        .event-impact-card, .host-event-card { margin-top: 25px; border: 1px solid rgba(255,255,255,.18); border-radius: 22px; background: linear-gradient(145deg, rgba(255,255,255,.055), rgba(255,255,255,.018)); }
+        .event-impact-card { padding: 24px; }
+        .event-impact-card > strong { display: block; margin-bottom: 21px; font-size: 13px; }
+        .impact-stat { display: grid; grid-template-columns: 34px 1fr; gap: 12px; align-items: center; margin-top: 18px; }
+        .impact-stat > span { font-size: 24px; color: var(--white); text-align: center; }
+        .impact-stat b { display: block; font-size: 21px; font-weight: 500; }
+        .impact-stat small { display: block; margin-top: 4px; color: #9ba2ac; }
+
+        .host-event-card { position: relative; display: block; padding: 27px 56px 27px 24px; border-color: rgba(237,199,90,.72); }
+        .host-star { color: var(--yellow); font-size: 21px; }
+        .host-event-card strong { display: block; margin-top: 10px; color: var(--yellow); font: 400 25px/1 var(--serif); font-style: italic; }
+        .host-event-card p { margin-top: 18px; color: #aeb4bd; font-size: 13px; line-height: 1.65; }
+        .host-event-card i { position: absolute; right: 18px; bottom: 22px; width: 42px; height: 42px; display: grid; place-items: center; border: 1px solid var(--yellow); border-radius: 50%; color: var(--yellow); font-style: normal; }
+
+        .event-feature-card { min-height: 492px; position: relative; overflow: hidden; border: 1px solid rgba(237,199,90,.4); border-radius: 18px; background: #080b10; }
+        .event-feature-card > img { position: absolute; inset: 0; filter: saturate(.72) contrast(1.04); }
+        .event-feature-shade { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(5,8,12,.98) 0%, rgba(5,8,12,.86) 37%, rgba(5,8,12,.22) 72%), linear-gradient(180deg, rgba(5,8,12,.08), rgba(5,8,12,.5)); }
+        .event-feature-body { position: relative; z-index: 2; width: min(52%, 560px); min-height: 492px; padding: 56px 42px 38px; display: flex; flex-direction: column; justify-content: center; }
+        .featured-chip { width: fit-content; padding: 10px 13px; border: 1px solid rgba(237,199,90,.38); border-radius: 4px; color: var(--yellow); }
+        .event-feature-time { margin-top: 25px; color: #edf0f4; }
+        .event-feature-body h3 { margin-top: 22px; font: 400 clamp(48px, 4.5vw, 72px)/.88 var(--serif); }
+        .event-feature-body > p { margin-top: 22px; max-width: 470px; color: #c0c5cc; font-size: 16px; line-height: 1.55; }
+        .event-location { margin-top: 27px; color: #e4d8b8; }
+        .event-feature-body > a { margin-top: 26px; width: 58px; height: 58px; display: grid; place-items: center; border-radius: 50%; background: var(--yellow); color: #101319; font-size: 30px; }
+
+        .event-card-grid { margin-top: 20px; display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 16px; }
+        .event-list-card { min-height: 126px; display: grid; grid-template-columns: 84px 1fr 52px; overflow: hidden; border: 1px solid rgba(255,255,255,.2); border-radius: 16px; background: rgba(4,10,18,.58); }
+        .event-calendar { padding: 18px 10px; display: flex; flex-direction: column; justify-content: center; align-items: center; background: #f3ead6; color: #101319; }
+        .event-calendar small { font-weight: 700; }
+        .event-calendar b { margin-top: 6px; font: 400 39px/1 var(--serif); }
+        .event-list-copy { min-width: 0; padding: 19px 18px; }
+        .event-list-copy > small { margin-left: 9px; color: #a9b0ba; font-size: 11px; }
+        .event-type { display: inline-flex; padding: 4px 7px; border-radius: 5px; font: 600 9px/1 var(--mono); text-transform: uppercase; }
+        .type-blue { background: rgba(34,112,196,.24); color: #67adff; }
+        .type-purple { background: rgba(111,57,190,.25); color: #ba81ff; }
+        .type-green { background: rgba(91,139,20,.25); color: #9de343; }
+        .type-orange { background: rgba(181,73,25,.26); color: #ff945d; }
+        .event-list-copy h4 { margin-top: 13px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 16px; font-weight: 500; }
+        .event-list-copy p { margin-top: 8px; color: #9ea5af; font-size: 13px; }
+        .event-list-card > a { align-self: center; justify-self: center; width: 44px; height: 44px; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.25); border-radius: 50%; font-size: 21px; }
+        .event-list-card:hover > a { border-color: var(--yellow); background: var(--yellow); color: #11151b; }
+
+        .event-community-strip { margin-top: 20px; min-height: 96px; display: grid; grid-template-columns: auto 1fr auto; gap: 28px; align-items: center; padding: 20px 30px; border: 1px solid rgba(255,255,255,.18); border-radius: 18px; background: linear-gradient(90deg, rgba(255,255,255,.045), rgba(255,255,255,.02)); }
+        .community-faces { display: flex; align-items: center; padding-left: 12px; }
+        .community-faces img, .community-faces span { width: 48px; height: 48px; margin-left: -12px; border: 2px solid #111925; border-radius: 50%; }
+        .community-faces img { object-position: top; }
+        .community-faces span { display: grid; place-items: center; background: #8c641f; color: #fff; font-size: 12px; }
+        .event-community-strip strong { font-size: 17px; font-weight: 500; }
+        .event-community-strip p { margin-top: 6px; color: #9ca4ae; font-size: 13px; }
+        .event-community-strip > a { min-width: 210px; min-height: 50px; padding: 0 20px; display: flex; align-items: center; justify-content: space-between; border: 1px solid var(--yellow); border-radius: 999px; color: var(--yellow); font-size: 13px; font-weight: 600; }
+
+        .past-event-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+        .past-event-card { min-height: 590px; overflow: hidden; border: 1px solid rgba(255,255,255,.18); border-radius: 18px; background: rgba(4,10,18,.65); }
+        .past-event-card img { height: 68%; filter: grayscale(.4); }
+        .past-event-card div { padding: 25px; }
+        .past-event-card span { color: var(--yellow); }
+        .past-event-card h3 { margin-top: 13px; font: 400 32px/1 var(--serif); }
+        .past-event-card p { margin-top: 13px; color: #aab1ba; font-size: 13px; line-height: 1.55; }
+
+        @media (max-width: 1120px) {
+          .events-layout { grid-template-columns: 1fr; gap: 34px; }
+          .events-sidebar { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+          .events-eyebrow, .events-sidebar h2, .events-sidebar > p, .event-switch { grid-column: 1 / -1; }
+          .event-impact-card, .host-event-card { margin-top: 0; }
+        }
+        @media (max-width: 760px) {
+          .events { padding: 66px 0; }
+          .events-sidebar { display: block; }
+          .event-impact-card, .host-event-card { margin-top: 20px; }
+          .event-feature-card, .event-feature-body { min-height: 530px; }
+          .event-feature-body { width: 100%; padding: 38px 24px 28px; justify-content: flex-end; }
+          .event-feature-shade { background: linear-gradient(180deg, rgba(5,8,12,.1), rgba(5,8,12,.98) 68%); }
+          .event-card-grid { grid-template-columns: 1fr; }
+          .event-list-card { grid-template-columns: 72px 1fr 46px; }
+          .event-list-copy > small { display: block; margin: 8px 0 0; }
+          .event-community-strip { grid-template-columns: 1fr; padding: 24px; }
+          .event-community-strip > a { min-width: 0; width: 100%; }
+          .past-event-grid { grid-template-columns: 1fr; }
+          .past-event-card { min-height: 470px; }
+        }
+      </style>
+
+      <!-- =========================================================
+           SECTION 6 HTML — KRIGNAL AI PRIVATE MATCHING
+      ========================================================== -->
+      <section class="section ai" id="ai">
+        <div class="container">
+          <div class="ai-topline mono reveal"><span>03 &nbsp;•&nbsp; Connect</span><span>Krignal AI</span></div>
+
+          <header class="ai-luxe-head reveal" data-delay="1">
+            <h2>Matched to what<br /><em>fits your goals.</em></h2>
+            <p>Get matched to the people and opportunities that fit your goals, then meet them in the real world.</p>
+            <div class="ai-pills"><span>Smart Matches</span><span>Online Community</span><span>Private by Default</span></div>
+          </header>
+
+          <div class="ai-luxe-grid reveal" data-delay="2">
+            <aside class="ai-profile-note">
+              <div class="ai-crest"><span>K</span></div>
+              <strong class="mono">Matched from your<br />Krignal AI profile</strong>
+              <i></i>
+              <p>A connection only happens with context and consent, never just because an AI matched two profiles. Your goals stay between you and Krignal.</p>
+            </aside>
+
+            <article class="ai-concierge-card">
+              <img loading="eager" src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=1300&q=88" alt="Private Krignal matching concierge" />
+              <div class="ai-concierge-shade"></div>
+              <span class="ai-private-pill">♛ &nbsp; Private by Design</span>
+            </article>
+
+            <section class="ai-matches-card">
+              <header><h3>Your matches</h3><span class="mono">• Updated live</span></header>
+              <article class="ai-match-row"><b>AV</b><div><strong>Ananya Verma</strong><p>Fintech founder, Series B, building in payments that overlap with your market.</p></div><span>92% fit</span></article>
+              <article class="ai-match-row"><b>KG</b><div><strong>Krishna Global</strong><p>Family office, Singapore, actively deploying into Indian consumer brands.</p></div><span>88% fit</span></article>
+              <article class="ai-match-row"><b>OP</b><div><strong>Opportunity</strong><p>Cofounder search • Bengaluru. A technical cofounder matched to your goals.</p></div><span>New</span></article>
+            </section>
+          </div>
+
+          <div class="ai-luxe-cta reveal" data-delay="3">
+            <div class="ai-compass">✦</div>
+            <a href="#membership">Build your Krignal AI profile <span>→</span></a>
+            <div class="ai-assurance"><span>◇</span><strong>Context First</strong></div>
+            <div class="ai-assurance"><span>♧</span><strong>Consent Always</strong></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 6 CSS — KRIGNAL AI PRIVATE MATCHING -->
+      <style>
+        .ai {
+          padding: 62px 0 76px;
+          overflow: hidden;
+          color: var(--white);
+          background:
+            radial-gradient(circle at 50% 18%, rgba(237,199,90,.055), transparent 31%),
+            #070706;
+        }
+        .ai::before { content: ""; position: absolute; inset: 0; pointer-events: none; background-image: radial-gradient(rgba(237,199,90,.13) .7px, transparent .7px); background-size: 5px 5px; opacity: .11; }
+        .ai > .container { position: relative; z-index: 2; }
+        .ai-topline { display: flex; justify-content: space-between; align-items: center; padding-bottom: 17px; border-bottom: 1px solid rgba(237,199,90,.26); color: var(--yellow); }
+        .ai-topline::after { content: ""; position: absolute; left: 50%; top: 47px; width: 7px; height: 7px; background: var(--yellow); transform: rotate(45deg); box-shadow: 0 0 17px var(--yellow); }
+
+        .ai-luxe-head { max-width: 900px; margin: 36px auto 34px; text-align: center; }
+        .ai-luxe-head h2 { font: 400 clamp(57px, 6.2vw, 92px)/.9 var(--serif); letter-spacing: -.04em; }
+        .ai-luxe-head h2 em { color: var(--yellow); font-weight: 400; }
+        .ai-luxe-head > p { max-width: 690px; margin: 22px auto 0; color: #a9a49a; font: 400 18px/1.45 var(--serif); }
+        .ai-pills { margin-top: 24px; display: flex; justify-content: center; flex-wrap: wrap; gap: 14px; }
+        .ai-pills span { min-width: 176px; padding: 12px 20px; border: 1px solid rgba(237,199,90,.48); border-radius: 999px; color: #cfb986; font: 500 9px/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; }
+
+        .ai-luxe-grid { display: grid; grid-template-columns: minmax(210px,.47fr) minmax(390px,1.1fr) minmax(350px,.95fr); gap: 16px; }
+        .ai-profile-note, .ai-concierge-card, .ai-matches-card { min-height: 475px; border: 1px solid rgba(237,199,90,.35); border-radius: 18px; background: rgba(16,15,13,.72); }
+        .ai-profile-note { padding: 34px 30px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+        .ai-crest { width: 112px; height: 112px; display: grid; place-items: center; border: 1px solid rgba(237,199,90,.54); border-radius: 50%; box-shadow: inset 0 0 0 9px rgba(237,199,90,.035); }
+        .ai-crest span { width: 72px; height: 72px; display: grid; place-items: center; border: 1px solid rgba(237,199,90,.62); color: var(--yellow); font: 400 46px/1 var(--serif); }
+        .ai-profile-note > strong { margin-top: 43px; color: #cfad62; line-height: 1.8; }
+        .ai-profile-note > i { width: 100%; height: 1px; margin: 22px 0; background: linear-gradient(90deg, transparent, var(--yellow), transparent); }
+        .ai-profile-note > p { color: #968b76; font: italic 17px/1.6 var(--serif); text-align: left; }
+
+        .ai-concierge-card { position: relative; overflow: hidden; }
+        .ai-concierge-card img { position: absolute; inset: 0; filter: sepia(.22) saturate(.7) brightness(.68) contrast(1.08); }
+        .ai-concierge-shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(7,7,6,.06), rgba(7,7,6,.58)); }
+        .ai-private-pill { position: absolute; z-index: 2; left: 50%; bottom: 18px; transform: translateX(-50%); min-width: 238px; padding: 12px 18px; border: 1px solid var(--yellow); border-radius: 999px; background: rgba(7,7,6,.8); color: var(--yellow); text-align: center; font: 500 9px/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; backdrop-filter: blur(12px); }
+
+        .ai-matches-card { padding: 26px 20px; }
+        .ai-matches-card > header { display: flex; justify-content: space-between; align-items: center; padding: 0 7px 18px; }
+        .ai-matches-card h3 { font: 400 30px/1 var(--serif); }
+        .ai-matches-card header span { color: var(--yellow); }
+        .ai-match-row { min-height: 116px; display: grid; grid-template-columns: 60px 1fr auto; gap: 14px; align-items: center; margin-top: 12px; padding: 16px; border: 1px solid rgba(255,255,255,.1); border-radius: 15px; background: linear-gradient(110deg, rgba(255,255,255,.045), rgba(255,255,255,.018)); }
+        .ai-match-row > b { width: 54px; height: 54px; display: grid; place-items: center; border: 1px solid rgba(237,199,90,.42); border-radius: 50%; color: var(--yellow); font: 400 24px/1 var(--serif); }
+        .ai-match-row div strong { font: 400 19px/1 var(--serif); }
+        .ai-match-row div p { margin-top: 7px; color: #aaa49a; font: 400 14px/1.35 var(--serif); }
+        .ai-match-row > span { min-width: 70px; padding: 9px 10px; border: 1px solid rgba(237,199,90,.5); border-radius: 999px; color: #e1c57b; text-align: center; font-size: 12px; }
+
+        .ai-luxe-cta { margin-top: 18px; min-height: 116px; display: grid; grid-template-columns: 120px minmax(330px,1.25fr) .72fr .72fr; align-items: center; border: 1px solid rgba(237,199,90,.5); border-radius: 18px; background: linear-gradient(90deg, rgba(237,199,90,.045), rgba(255,255,255,.018)); }
+        .ai-compass { display: grid; place-items: center; color: var(--yellow); font-size: 49px; }
+        .ai-luxe-cta > a { min-height: 72px; margin: 17px 0; padding: 0 48px; display: flex; justify-content: space-between; align-items: center; border-radius: 16px; background: linear-gradient(100deg, #d9a940, var(--yellow)); color: #15120b; font: 600 11px/1 var(--mono); letter-spacing: .16em; text-transform: uppercase; box-shadow: inset 0 0 0 1px rgba(255,255,255,.25); }
+        .ai-assurance { min-height: 72px; display: flex; align-items: center; justify-content: center; gap: 16px; border-left: 1px solid rgba(237,199,90,.21); color: #bf9b55; }
+        .ai-assurance span { font-size: 34px; color: var(--yellow); }
+        .ai-assurance strong { font: 500 10px/1.4 var(--mono); letter-spacing: .13em; text-transform: uppercase; }
+
+        @media (max-width: 1120px) {
+          .ai-luxe-grid { grid-template-columns: .72fr 1.28fr; }
+          .ai-concierge-card { grid-column: 1 / -1; grid-row: 1; min-height: 430px; }
+          .ai-profile-note, .ai-matches-card { min-height: 430px; }
+          .ai-luxe-cta { grid-template-columns: 90px 1fr 1fr; }
+          .ai-luxe-cta > a { grid-column: 2 / 4; margin-right: 18px; }
+          .ai-assurance { border-top: 1px solid rgba(237,199,90,.21); }
+        }
+        @media (max-width: 760px) {
+          .ai { padding: 58px 0 66px; }
+          .ai-topline::after { display: none; }
+          .ai-luxe-head h2 { font-size: 55px; }
+          .ai-luxe-grid { grid-template-columns: 1fr; }
+          .ai-concierge-card, .ai-profile-note, .ai-matches-card { grid-column: auto; grid-row: auto; min-height: 430px; }
+          .ai-profile-note { min-height: 420px; }
+          .ai-match-row { grid-template-columns: 52px 1fr; }
+          .ai-match-row > span { grid-column: 2; width: fit-content; }
+          .ai-luxe-cta { padding: 18px; grid-template-columns: 1fr; gap: 12px; }
+          .ai-compass { display: none; }
+          .ai-luxe-cta > a { grid-column: auto; margin: 0; padding: 0 24px; }
+          .ai-assurance { min-height: 64px; border: 1px solid rgba(237,199,90,.18); }
+        }
+      </style>
+    <!-- =========================================================
+           SECTION 3 HTML — BENEFITS
+      ========================================================== -->
+      <section class="section benefits" id="benefits">
+        <div class="container">
+          <div class="benefits-head reveal">
+            <div>
+              <div class="section-label mono">Inside the Krignal Network</div>
+              <h2 class="section-title">
+                What becomes<br /><span class="yellow">possible.</span>
+              </h2>
+            </div>
+            <p class="section-copy">
+              Krignal is designed to create meaningful visibility, relevant
+              introductions and stronger business relationships—not just more
+              contacts.
+            </p>
+          </div>
+
+          <div class="benefit-grid">
+            <article class="benefit-card reveal">
+              <div class="benefit-top">
+                <span class="benefit-index mono">01 / Discovery</span>
+                <div class="benefit-icon" aria-hidden="true">
+                  <svg viewBox="0 0 52 52">
+                    <circle cx="26" cy="26" r="18" />
+                    <circle cx="26" cy="26" r="6" />
+                    <path d="M26 8v12M26 32v12M8 26h12M32 26h12" />
+                    <path d="m14 14 8 8M30 30l8 8M38 14l-8 8M22 30l-8 8" />
+                  </svg>
+                </div>
+              </div>
+              <div>
+                <h3>Curated Discovery</h3>
+                <p>
+                  Find founders, companies, experts and ideas that are relevant
+                  to your industry and current goals.
+                </p>
+              </div>
+              <a href="#tv">Discover through TV <span>↗</span></a>
+            </article>
+
+            <article class="benefit-card benefit-yellow reveal" data-delay="1">
+              <div class="benefit-top">
+                <span class="benefit-index mono">02 / Visibility</span>
+                <div class="benefit-icon" aria-hidden="true">
+                  <svg viewBox="0 0 52 52">
+                    <path d="M8 34V18l18-10 18 10v16L26 44 8 34Z" />
+                    <path d="m8 18 18 11 18-11M26 29v15" />
+                    <path d="M19 14h14" />
+                  </svg>
+                </div>
+              </div>
+              <div>
+                <h3>Founder Visibility</h3>
+                <p>
+                  Tell the story behind your work through meaningful films,
+                  interviews and business features.
+                </p>
+              </div>
+              <a href="#tv">Build recognition <span>↗</span></a>
+            </article>
+
+            <article class="benefit-card reveal" data-delay="2">
+              <div class="benefit-top">
+                <span class="benefit-index mono">03 / Rooms</span>
+                <div class="benefit-icon" aria-hidden="true">
+                  <svg viewBox="0 0 52 52">
+                    <circle cx="16" cy="18" r="6" />
+                    <circle cx="36" cy="18" r="6" />
+                    <path
+                      d="M5 43c1-10 5-16 11-16s10 6 11 16M25 43c1-10 5-16 11-16s10 6 11 16"
+                    />
+                    <path d="M22 16h8" />
+                  </svg>
+                </div>
+              </div>
+              <div>
+                <h3>Relevant Rooms</h3>
+                <p>
+                  Meet people from the same industry, growth stage or business
+                  intent in carefully designed gatherings.
+                </p>
+              </div>
+              <a href="#events">Explore events <span>↗</span></a>
+            </article>
+
+            <article class="benefit-card benefit-wide reveal">
+              <div class="benefit-top">
+                <span class="benefit-index mono">04 / Intelligence</span>
+                <div class="benefit-icon" aria-hidden="true">
+                  <svg viewBox="0 0 52 52">
+                    <path d="M10 39h32M13 34l9-10 7 6 11-16" />
+                    <path d="M34 14h6v6M10 12h13M10 18h8" />
+                  </svg>
+                </div>
+              </div>
+              <div>
+                <h3>Weekly Business Signal</h3>
+                <p>
+                  Stay aware of useful ideas, market movements, opportunities
+                  and conversations without following endless noise.
+                </p>
+              </div>
+              <a href="#tv">Read the signal <span>↗</span></a>
+            </article>
+
+            <article class="benefit-card reveal" data-delay="1">
+              <div class="benefit-top">
+                <span class="benefit-index mono">05 / Global</span>
+                <div class="benefit-icon" aria-hidden="true">
+                  <svg viewBox="0 0 52 52">
+                    <circle cx="26" cy="26" r="18" />
+                    <path
+                      d="M8 26h36M26 8c6 5 9 11 9 18s-3 13-9 18M26 8c-6 5-9 11-9 18s3 13 9 18"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <div>
+                <h3>Cross-Border Access</h3>
+                <p>
+                  Connect Indian capability with global demand across cities
+                  such as Chennai, Dubai, London and Singapore.
+                </p>
+              </div>
+              <a href="#ai">See how matching works <span>↗</span></a>
+            </article>
+
+            <article class="benefit-card benefit-dark reveal" data-delay="2">
+              <div class="benefit-top">
+                <span class="benefit-index mono">06 / Matching</span>
+                <div class="benefit-icon" aria-hidden="true">
+                  <svg viewBox="0 0 52 52">
+                    <circle cx="17" cy="17" r="6" />
+                    <circle cx="35" cy="35" r="6" />
+                    <path d="M21 21l10 10M31 13h8v8M13 31v8h8" />
+                    <path d="M30 17h9M17 30v9" />
+                  </svg>
+                </div>
+              </div>
+              <div>
+                <h3>AI Twin Matching</h3>
+                <p>
+                  Let your AI twin identify relevant people, exchange context
+                  and recommend conversations worth having.
+                </p>
+              </div>
+              <a href="#ai">Understand Krignal AI <span>↗</span></a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 3 CSS — BENEFITS -->
+      <style>
+        .benefits {
+          overflow: hidden;
+          background:
+            radial-gradient(circle at 12% 5%, rgba(237, 199, 90, 0.08), transparent 28%),
+            var(--black-2);
+        }
+
+        .benefits::before {
+          content: "";
+          position: absolute;
+          left: 50%;
+          top: 0;
+          bottom: 0;
+          width: 1px;
+          background: linear-gradient(transparent, rgba(237, 199, 90, 0.28), transparent);
+        }
+
+        .benefits-head {
+          display: grid;
+          grid-template-columns: 1fr 0.82fr;
+          gap: 65px;
+          align-items: end;
+          margin-bottom: 64px;
+        }
+
+        .benefit-grid {
+          position: relative;
+          z-index: 2;
+          display: grid;
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: 16px;
+        }
+
+        .benefit-card {
+          grid-column: auto;
+          min-height: 370px;
+          height: 100%;
+          position: relative;
+          overflow: hidden;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          padding: 30px;
+          border: 1px solid rgba(237, 199, 90, 0.28);
+          border-radius: 22px;
+          background:
+            linear-gradient(145deg, rgba(237, 199, 90, 0.045), transparent 58%),
+            #15110f;
+          transition: transform 0.4s ease, border-color 0.4s ease;
+        }
+
+        .benefit-card::before {
+          content: "";
+          position: absolute;
+          width: 190px;
+          height: 190px;
+          right: -95px;
+          top: -95px;
+          border: 1px solid rgba(237, 199, 90, 0.12);
+          border-radius: 50%;
+          transition: transform 0.45s ease;
+        }
+
+        .benefit-card::after {
+          content: "";
+          position: absolute;
+          left: 30px;
+          right: 30px;
+          bottom: 0;
+          height: 3px;
+          background: var(--yellow);
+          transform: scaleX(0);
+          transform-origin: left;
+          transition: transform 0.4s ease;
+        }
+
+        .benefit-card:hover {
+          transform: translateY(-10px);
+          border-color: var(--yellow);
+        }
+
+        .benefit-card:hover::before {
+          transform: scale(1.3);
+        }
+
+        .benefit-card:hover::after {
+          transform: scaleX(1);
+        }
+
+        .benefit-wide {
+          grid-column: auto;
+        }
+
+        .benefit-yellow {
+          background: var(--yellow);
+          color: var(--black);
+          border-color: var(--yellow);
+        }
+
+        .benefit-yellow::before {
+          border-color: rgba(0, 0, 0, 0.18);
+        }
+
+        .benefit-yellow::after {
+          background: var(--black);
+        }
+
+        .benefit-dark {
+          background: #0b0b0b;
+        }
+
+        .benefit-top {
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-start;
+        }
+
+        .benefit-index {
+          color: var(--yellow);
+        }
+
+        .benefit-yellow .benefit-index {
+          color: #675200;
+        }
+
+        .benefit-icon {
+          width: 58px;
+          height: 58px;
+          color: var(--yellow);
+        }
+
+        .benefit-yellow .benefit-icon {
+          color: var(--black);
+        }
+
+        .benefit-icon svg {
+          width: 100%;
+          height: 100%;
+          fill: none;
+          stroke: currentColor;
+          stroke-width: 1.3;
+          stroke-linecap: round;
+          stroke-linejoin: round;
+        }
+
+        .benefit-card h3 {
+          margin-bottom: 16px;
+          font: 400 40px/1 var(--serif);
+          letter-spacing: -0.025em;
+        }
+
+        .benefit-card p {
+          max-width: 460px;
+          color: var(--grey);
+          font-size: 14px;
+          line-height: 1.68;
+        }
+
+        .benefit-yellow p {
+          color: #4c421f;
+        }
+
+        .benefit-card a {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          margin-top: 30px;
+          padding-top: 18px;
+          border-top: 1px solid var(--line);
+          font: 500 8px/1 var(--mono);
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+        }
+
+        .benefit-yellow a {
+          border-color: rgba(0, 0, 0, 0.2);
+        }
+
+        .benefit-card a span {
+          font-size: 18px;
+          transition: transform 0.3s ease;
+        }
+
+        .benefit-card:hover a span {
+          transform: translate(4px, -4px);
+        }
+
+        @media (max-width: 1050px) {
+          .benefits-head {
+            grid-template-columns: 1fr;
+            gap: 26px;
+          }
+
+          .benefit-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+          }
+
+          .benefit-card,
+          .benefit-wide {
+            grid-column: auto;
+          }
+        }
+
+        @media (max-width: 700px) {
+          .benefit-grid {
+            grid-template-columns: 1fr;
+          }
+
+          .benefit-card,
+          .benefit-wide {
+            min-height: 330px;
+            padding: 25px;
+          }
+
+          .benefit-card h3 {
+            font-size: 36px;
+          }
+
+          .benefit-icon {
+            width: 52px;
+            height: 52px;
+          }
+        }
+      </style>
+
+
+<!-- ==============================
+     KRIGNAL MEMBERS SECTION
+================================== -->
+<section class="kr-members-section" id="members">
+  <div class="kr-members-container">
+
+    <!-- Section heading -->
+    <div class="kr-members-header">
+
+      <div class="kr-members-label">
+        <span>Network</span>
+        <i></i>
+        <small>Faces of the network</small>
+      </div>
+
+      <div class="kr-members-intro">
+        <h2>
+          <span>@</span>krignal<em>.</em>
+        </h2>
+
+        <p>
+          Professional matches, made in person. Membership is by
+          application and referral.
+        </p>
+
+        <div class="kr-members-tags">
+          <span class="active">Curated</span>
+          <span>Verified</span>
+          <span>Offline first</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Members grid -->
+    <div class="kr-members-grid">
+
+      <!-- Member 1 -->
+      <article class="kr-member-card">
+        <div class="kr-member-image">
+          <img
+            src="https://randomuser.me/api/portraits/women/44.jpg"
+            alt="Ananya Kulkarni"
+            loading="lazy"
+            onerror="this.src='https://placehold.co/600x800/111111/EDC75A?text=Member'"
+          >
+        </div>
+
+        <div class="kr-member-name-row">
+          <h3>Ananya Kulkarni</h3>
+          <span>BLR</span>
+        </div>
+
+        <p>Founder, Industrial</p>
+      </article>
+
+      <!-- Member 2 -->
+      <article class="kr-member-card">
+        <div class="kr-member-image">
+          <img
+            src="https://randomuser.me/api/portraits/men/46.jpg"
+            alt="Suresh Nair"
+            loading="lazy"
+            onerror="this.src='https://placehold.co/600x800/111111/EDC75A?text=Member'"
+          >
+        </div>
+
+        <div class="kr-member-name-row">
+          <h3>Suresh Nair</h3>
+          <span>BOM</span>
+        </div>
+
+        <p>Chair, Family Office</p>
+      </article>
+
+      <!-- Member 3 -->
+      <article class="kr-member-card">
+        <div class="kr-member-image">
+          <img
+            src="https://randomuser.me/api/portraits/men/32.jpg"
+            alt="Rahul Malhotra"
+            loading="lazy"
+            onerror="this.src='https://placehold.co/600x800/111111/EDC75A?text=Member'"
+          >
+        </div>
+
+        <div class="kr-member-name-row">
+          <h3>Rahul Malhotra</h3>
+          <span>BLR</span>
+        </div>
+
+        <p>Founder, SaaS</p>
+      </article>
+
+      <!-- Member 4 -->
+      <article class="kr-member-card">
+        <div class="kr-member-image">
+          <img
+            src="https://randomuser.me/api/portraits/women/65.jpg"
+            alt="Meera Desai"
+            loading="lazy"
+            onerror="this.src='https://placehold.co/600x800/111111/EDC75A?text=Member'"
+          >
+        </div>
+
+        <div class="kr-member-name-row">
+          <h3>Meera Desai</h3>
+          <span>LDN</span>
+        </div>
+
+        <p>GP, Global VC</p>
+      </article>
+
+      <!-- Member 5 -->
+      <article class="kr-member-card">
+        <div class="kr-member-image">
+          <img
+            src="https://randomuser.me/api/portraits/men/75.jpg"
+            alt="Krishnan Iyer"
+            loading="lazy"
+            onerror="this.src='https://placehold.co/600x800/111111/EDC75A?text=Member'"
+          >
+        </div>
+
+        <div class="kr-member-name-row">
+          <h3>Krishnan Iyer</h3>
+          <span>BOM</span>
+        </div>
+
+        <p>Industrialist, Heritage</p>
+      </article>
+
+      <!-- Member 6 -->
+      <article class="kr-member-card">
+        <div class="kr-member-image">
+          <img
+            src="https://randomuser.me/api/portraits/women/68.jpg"
+            alt="Priya Sharma"
+            loading="lazy"
+            onerror="this.src='https://placehold.co/600x800/111111/EDC75A?text=Member'"
+          >
+        </div>
+
+        <div class="kr-member-name-row">
+          <h3>Priya Sharma</h3>
+          <span>DEL</span>
+        </div>
+
+        <p>Founder, Climate Tech</p>
+      </article>
+
+      <!-- Member 7 -->
+      <article class="kr-member-card">
+        <div class="kr-member-image">
+          <img
+            src="https://randomuser.me/api/portraits/men/52.jpg"
+            alt="Vivek Gupta"
+            loading="lazy"
+            onerror="this.src='https://placehold.co/600x800/111111/EDC75A?text=Member'"
+          >
+        </div>
+
+        <div class="kr-member-name-row">
+          <h3>Vivek Gupta</h3>
+          <span>NYC</span>
+        </div>
+
+        <p>Operator, Fintech</p>
+      </article>
+
+      <!-- Member 8 -->
+      <article class="kr-member-card">
+        <div class="kr-member-image">
+          <img
+            src="https://randomuser.me/api/portraits/women/33.jpg"
+            alt="Anika Tata"
+            loading="lazy"
+            onerror="this.src='https://placehold.co/600x800/111111/EDC75A?text=Member'"
+          >
+        </div>
+
+        <div class="kr-member-name-row">
+          <h3>Anika Tata</h3>
+          <span>SGP</span>
+        </div>
+
+        <p>Founder, Consumer</p>
+      </article>
+
+    </div>
+
+    <!-- Bottom row -->
+    <div class="kr-members-footer">
+      <p>
+        &amp; <strong>1,192</strong> others
+      </p>
+
+      <a href="#membership" class="kr-members-apply-btn">
+        Apply as individual
+        <span>→</span>
+      </a>
+    </div>
+
+  </div>
+</section>
+<style>
+  /* ==================================
+   KRIGNAL MEMBERS SECTION
+================================== */
+
+.kr-members-section {
+  --kr-members-bg: #1c1916;
+  --kr-members-text: #f5f1e8;
+  --kr-members-muted: #aaa398;
+  --kr-members-yellow: #edc75a;
+  --kr-members-line: rgba(237, 199, 90, 0.32);
+
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: var(--kr-members-bg);
+  color: var(--kr-members-text);
+  padding: clamp(75px, 8vw, 130px) 0;
+}
+
+.kr-members-container {
+  width: min(1180px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+/* Header */
+
+.kr-members-header {
+  display: grid;
+  grid-template-columns: 180px minmax(0, 1fr);
+  align-items: start;
+  gap: clamp(38px, 7vw, 100px);
+  margin-bottom: clamp(55px, 6vw, 85px);
+}
+
+.kr-members-label {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  column-gap: 14px;
+  row-gap: 12px;
+  padding-top: 16px;
+}
+
+.kr-members-label > span {
+  color: var(--kr-members-yellow);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 9px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.kr-members-label > i {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: var(--kr-members-line);
+}
+
+.kr-members-label > small {
+  grid-column: 1 / -1;
+  color: #746e66;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 7px;
+  line-height: 1.4;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+}
+
+.kr-members-intro {
+  max-width: 630px;
+}
+
+.kr-members-intro h2 {
+  margin: 0;
+  color: var(--kr-members-text);
+  font-family: "Libre Caslon Display", Georgia, serif;
+  font-size: clamp(50px, 6vw, 82px);
+  font-weight: 400;
+  line-height: 0.92;
+  letter-spacing: -0.045em;
+}
+
+.kr-members-intro h2 span {
+  font-style: italic;
+}
+
+.kr-members-intro h2 em {
+  color: var(--kr-members-yellow);
+  font-style: normal;
+}
+
+.kr-members-intro > p {
+  max-width: 550px;
+  margin: 24px 0 0;
+  color: #d4cec3;
+  font-family: "DM Sans", sans-serif;
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+.kr-members-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 25px;
+}
+
+.kr-members-tags span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 0 14px;
+  border: 1px solid rgba(245, 241, 232, 0.25);
+  border-radius: 999px;
+  color: #aaa49a;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 7px;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.kr-members-tags span.active {
+  border-color: var(--kr-members-text);
+  color: var(--kr-members-text);
+}
+
+/* Members grid */
+
+.kr-members-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(32px, 4vw, 54px) clamp(18px, 2.4vw, 34px);
+}
+
+.kr-member-card {
+  min-width: 0;
+}
+
+.kr-member-image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 0.78;
+  overflow: hidden;
+  border-radius: 999px 999px 0 0;
+  background: #11100e;
+}
+
+.kr-member-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      180deg,
+      transparent 48%,
+      rgba(0, 0, 0, 0.16) 100%
+    );
+}
+
+.kr-member-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  filter: grayscale(1) contrast(1.08);
+  transform: scale(1.01);
+  transition:
+    transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1),
+    filter 0.6s ease;
+}
+
+.kr-member-card:hover .kr-member-image img {
+  filter: grayscale(0.85) contrast(1.05);
+  transform: scale(1.055);
+}
+
+.kr-member-name-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.kr-member-name-row h3 {
+  margin: 0;
+  color: var(--kr-members-text);
+  font-family: "DM Sans", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.kr-member-name-row span {
+  flex: 0 0 auto;
+  padding-top: 2px;
+  color: var(--kr-members-yellow);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 6px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.kr-member-card > p {
+  margin: 4px 0 0;
+  color: var(--kr-members-muted);
+  font-family: "DM Sans", sans-serif;
+  font-size: 10px;
+  line-height: 1.45;
+}
+
+/* Bottom row */
+
+.kr-members-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  margin-top: clamp(50px, 6vw, 80px);
+}
+
+.kr-members-footer > p {
+  margin: 0;
+  color: var(--kr-members-text);
+  font-family: "Libre Caslon Display", Georgia, serif;
+  font-size: clamp(18px, 2vw, 26px);
+}
+
+.kr-members-footer > p strong {
+  color: var(--kr-members-yellow);
+  font-weight: 400;
+}
+
+.kr-members-apply-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  min-height: 52px;
+  padding: 0 26px;
+  border: 1px solid var(--kr-members-yellow);
+  border-radius: 999px;
+  background: var(--kr-members-yellow);
+  color: #17130d;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 8px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.kr-members-apply-btn span {
+  font-size: 15px;
+  transition: transform 0.3s ease;
+}
+
+.kr-members-apply-btn:hover {
+  background: transparent;
+  color: var(--kr-members-yellow);
+  transform: translateY(-2px);
+}
+
+.kr-members-apply-btn:hover span {
+  transform: translateX(5px);
+}
+
+/* Tablet */
+
+@media (max-width: 950px) {
+  .kr-members-header {
+    grid-template-columns: 135px minmax(0, 1fr);
+    gap: 45px;
+  }
+
+  .kr-members-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 30px;
+  }
+
+  .kr-member-image {
+    aspect-ratio: 0.88;
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 650px) {
+  .kr-members-section {
+    padding: 75px 0;
+  }
+
+  .kr-members-container {
+    width: min(100% - 30px, 1180px);
+  }
+
+  .kr-members-header {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    margin-bottom: 48px;
+  }
+
+  .kr-members-label {
+    max-width: 185px;
+    padding-top: 0;
+  }
+
+  .kr-members-intro h2 {
+    font-size: clamp(52px, 17vw, 72px);
+  }
+
+  .kr-members-intro > p {
+    margin-top: 18px;
+    font-size: 14px;
+  }
+
+  .kr-members-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 35px 14px;
+  }
+
+  .kr-member-image {
+    aspect-ratio: 0.76;
+  }
+
+  .kr-member-name-row {
+    display: block;
+    margin-top: 11px;
+  }
+
+  .kr-member-name-row h3 {
+    font-size: 11px;
+  }
+
+  .kr-member-name-row span {
+    display: block;
+    margin-top: 5px;
+  }
+
+  .kr-member-card > p {
+    font-size: 9px;
+  }
+
+  .kr-members-footer {
+    align-items: flex-start;
+    flex-direction: column;
+    margin-top: 50px;
+  }
+
+  .kr-members-apply-btn {
+    width: 100%;
+  }
+}
+
+/* Small mobile */
+
+@media (max-width: 390px) {
+  .kr-members-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .kr-member-image {
+    aspect-ratio: 0.92;
+  }
+}
+</style>
+
+      <!-- =========================================================
+           SECTION 7 HTML — FAQ
+      ========================================================== -->
+      <section class="section faq" id="faq">
+        <div class="container faq-layout">
+          <div class="faq-intro reveal">
+            <div class="section-label mono">FAQ</div>
+            <h2 class="section-title">
+              Before you enter<br />the <span class="yellow">network.</span>
+            </h2>
+            <p class="section-copy">
+              A clear introduction to how Krignal TV, curated events, AI twins
+              and membership work together.
+            </p>
+          </div>
+
+          <div class="faq-list">
+            <article class="faq-item open reveal">
+              <button class="faq-question" type="button" aria-expanded="true">
+                <span><b>01</b>What exactly is Krignal?</span><i></i>
+              </button>
+              <div class="faq-answer">
+                <div>
+                  <p>
+                    Krignal is a curated global business network combining
+                    discovery through Krignal TV, meaningful in-person rooms
+                    through Events, and intelligent context-based introductions
+                    through Krignal AI.
+                  </p>
+                </div>
+              </div>
+            </article>
+
+            <article class="faq-item reveal">
+              <button class="faq-question" type="button" aria-expanded="false">
+                <span><b>02</b>What appears on Krignal TV?</span><i></i>
+              </button>
+              <div class="faq-answer">
+                <div>
+                  <p>
+                    Krignal TV includes Brand Stories, Journeys That Inspire,
+                    Get to Know profiles, Find Your Person stories and Week’s
+                    Insights.
+                  </p>
+                </div>
+              </div>
+            </article>
+
+            <article class="faq-item reveal">
+              <button class="faq-question" type="button" aria-expanded="false">
+                <span><b>03</b>Who can attend the events?</span><i></i>
+              </button>
+              <div class="faq-answer">
+                <div>
+                  <p>
+                    Access depends on the format. Some gatherings accept
+                    relevant applicants, while others are Invite Only, Off the
+                    Record or reserved for Internal Members.
+                  </p>
+                </div>
+              </div>
+            </article>
+
+            <article class="faq-item reveal">
+              <button class="faq-question" type="button" aria-expanded="false">
+                <span><b>04</b>How does the AI twin work?</span><i></i>
+              </button>
+              <div class="faq-answer">
+                <div>
+                  <p>
+                    Your AI twin understands your skills, interests and current
+                    intent. It exchanges context with another member’s AI twin
+                    and recommends a human introduction only when the fit appears
+                    meaningful.
+                  </p>
+                </div>
+              </div>
+            </article>
+
+            <article class="faq-item reveal">
+              <button class="faq-question" type="button" aria-expanded="false">
+                <span><b>05</b>Does AI decide for members?</span><i></i>
+              </button>
+              <div class="faq-answer">
+                <div>
+                  <p>
+                    No. AI supports discovery and context. Members always decide
+                    whether to meet, collaborate or move forward.
+                  </p>
+                </div>
+              </div>
+            </article>
+
+            <article class="faq-item reveal">
+              <button class="faq-question" type="button" aria-expanded="false">
+                <span><b>06</b>How can I join?</span><i></i>
+              </button>
+              <div class="faq-answer">
+                <div>
+                  <p>
+                    Membership begins with an application or referral. Krignal
+                    reviews relevance, intent and potential contribution before
+                    confirming individual or corporate membership.
+                  </p>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 7 CSS — FAQ -->
+      <style>
+        .faq {
+          background: var(--black-2);
+        }
+
+        .faq-layout {
+          display: grid;
+          grid-template-columns: 0.72fr 1.28fr;
+          gap: 80px;
+          align-items: start;
+        }
+
+        .faq-intro {
+          position: sticky;
+          top: calc(var(--nav-height) + 34px);
+        }
+
+        .faq-intro .section-copy {
+          margin-top: 28px;
+        }
+
+        .faq-list {
+          border-top: 1px solid var(--line);
+        }
+
+        .faq-item {
+          border-bottom: 1px solid var(--line);
+        }
+
+        .faq-question {
+          width: 100%;
+          min-height: 105px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          gap: 22px;
+          border: 0;
+          background: transparent;
+          text-align: left;
+          cursor: pointer;
+        }
+
+        .faq-question span {
+          font: 400 clamp(27px, 2.5vw, 38px) / 1.1 var(--serif);
+        }
+
+        .faq-question b {
+          display: inline-block;
+          min-width: 50px;
+          color: var(--yellow);
+          font: 500 8px/1 var(--mono);
+        }
+
+        .faq-question i {
+          width: 46px;
+          height: 46px;
+          position: relative;
+          flex: 0 0 46px;
+          border: 1px solid var(--line);
+          border-radius: 50%;
+        }
+
+        .faq-question i::before,
+        .faq-question i::after {
+          content: "";
+          position: absolute;
+          width: 15px;
+          height: 1px;
+          left: 50%;
+          top: 50%;
+          background: var(--white);
+          transform: translate(-50%, -50%);
+        }
+
+        .faq-question i::after {
+          transform: translate(-50%, -50%) rotate(90deg);
+        }
+
+        .faq-item.open .faq-question i {
+          border-color: var(--yellow);
+          background: var(--yellow);
+        }
+
+        .faq-item.open .faq-question i::before,
+        .faq-item.open .faq-question i::after {
+          background: var(--black);
+        }
+
+        .faq-item.open .faq-question i::after {
+          transform: translate(-50%, -50%);
+        }
+
+        .faq-answer {
+          display: grid;
+          grid-template-rows: 0fr;
+          transition: grid-template-rows 0.4s ease;
+        }
+
+        .faq-answer > div {
+          overflow: hidden;
+        }
+
+        .faq-answer p {
+          padding: 0 70px 28px 50px;
+          color: var(--grey);
+          line-height: 1.7;
+        }
+
+        .faq-item.open .faq-answer {
+          grid-template-rows: 1fr;
+        }
+
+        @media (max-width: 1050px) {
+          .faq-layout {
+            grid-template-columns: 1fr;
+          }
+
+          .faq-intro {
+            position: static;
+          }
+        }
+
+        @media (max-width: 700px) {
+          .faq-question span {
+            font-size: 26px;
+          }
+
+          .faq-question b {
+            display: block;
+            margin-bottom: 8px;
+          }
+
+          .faq-answer p {
+            padding: 0 0 26px;
+          }
+        }
+      </style>
+
+      <!-- =========================================================
+           SECTION 8 HTML — MEMBERSHIP CTA
+      ========================================================== -->
+      <section class="membership" id="membership">
+        <div class="container membership-inner reveal">
+          <span class="mono yellow">Membership by application</span>
+          <h2>Be where useful connections begin.</h2>
+          <p>
+            Join a curated network built around meaningful visibility, relevant
+            rooms and context-rich introductions.
+          </p>
+          <div class="membership-actions">
+            <a class="btn btn-yellow" href="#">Apply as an individual ↗</a>
+            <a class="btn btn-line" href="#">Apply as a company ↗</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 8 CSS — MEMBERSHIP CTA -->
+      <style>
+        .membership {
+          min-height: 650px;
+          position: relative;
+          overflow: hidden;
+          display: grid;
+          place-items: center;
+          background:
+            radial-gradient(circle at center, rgba(237, 199, 90, 0.08), transparent 31%),
+            var(--black);
+          text-align: center;
+        }
+
+        .membership::before,
+        .membership::after {
+          content: "";
+          position: absolute;
+          width: 640px;
+          height: 640px;
+          border: 1px solid rgba(255, 255, 255, 0.12);
+          border-radius: 50%;
+        }
+
+        .membership::after {
+          width: 440px;
+          height: 440px;
+          border-color: rgba(237, 199, 90, 0.16);
+        }
+
+        .membership-inner {
+          position: relative;
+          z-index: 2;
+        }
+
+        .membership h2 {
+          max-width: 8ch;
+          margin: 14px auto 0;
+          font: 400 clamp(68px, 8vw, 132px) / 0.84 var(--serif);
+          letter-spacing: -0.05em;
+        }
+
+        .membership p {
+          max-width: 620px;
+          margin: 30px auto;
+          color: var(--grey);
+          line-height: 1.65;
+        }
+
+        .membership-actions {
+          display: flex;
+          justify-content: center;
+          gap: 12px;
+          flex-wrap: wrap;
+        }
+
+        .btn {
+          padding: 16px 21px;
+          border-radius: 999px;
+          font: 500 9px/1 var(--mono);
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+        }
+
+        .btn-yellow {
+          background: var(--yellow);
+          color: var(--black);
+        }
+
+        .btn-line {
+          border: 1px solid var(--line);
+        }
+
+        @media (max-width: 700px) {
+          .membership {
+            min-height: 590px;
+            padding: 70px 0;
+          }
+
+          .membership h2 {
+            font-size: 66px;
+          }
+        }
+      </style>
+    </main>
+
+    <!-- =========================================================
+         FOOTER HTML
+    ========================================================== -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <div class="footer-brand">Krignal</div>
+            <p class="footer-copy">
+              India’s global business network for discovering people, entering
+              relevant rooms and staying connected to opportunity.
+            </p>
+          </div>
+
+          <div>
+            <h4>Explore</h4>
+            <a href="#manifesto">The Network</a>
+            <a href="#tv">Krignal TV</a>
+            <a href="#events">Events</a>
+          </div>
+
+          <div>
+            <h4>Connect</h4>
+            <a href="#ai">Krignal AI</a>
+            <a href="#membership">Membership</a>
+            <a href="#faq">FAQ</a>
+          </div>
+
+          <div>
+            <h4>Company</h4>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+            <a href="#">Privacy</a>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <span>© 2026 Krignal. All rights reserved.</span>
+          <span>India ↔ The World</span>
+        </div>
+      </div>
+    </footer>
+
+    <!-- FOOTER CSS -->
+    <style>
+      .site-footer {
+        padding: 65px 0 28px;
+        border-top: 1px solid var(--line);
+        background: var(--black);
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 1.3fr repeat(3, 0.7fr);
+        gap: 40px;
+      }
+
+      .footer-brand {
+        font: 400 48px/1 var(--serif);
+      }
+
+      .footer-copy {
+        max-width: 420px;
+        margin-top: 18px;
+        color: var(--grey);
+        line-height: 1.65;
+      }
+
+      .footer-grid h4 {
+        margin-bottom: 18px;
+        color: var(--yellow);
+        font: 500 8px/1 var(--mono);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .footer-grid a {
+        display: block;
+        margin: 10px 0;
+        color: var(--grey);
+        font-size: 14px;
+      }
+
+      .footer-grid a:hover {
+        color: var(--white);
+      }
+
+      .footer-bottom {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 50px;
+        padding-top: 22px;
+        border-top: 1px solid var(--line);
+        color: #6f6e69;
+        font: 500 8px/1 var(--mono);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      @media (max-width: 1050px) {
+        .footer-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .footer-grid > div:first-child {
+          grid-column: 1 / -1;
+        }
+      }
+
+      @media (max-width: 700px) {
+        .footer-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .footer-grid > div:first-child {
+          grid-column: auto;
+        }
+
+        .footer-bottom {
+          flex-direction: column;
+          gap: 10px;
+        }
+      }
+    </style>
+
+    <!-- =========================================================
+         ALL INTERACTION JAVASCRIPT
+    ========================================================== -->
+    <script>
+      (() => {
+        "use strict";
+
+        const clamp = (value, min = 0, max = 1) =>
+          Math.min(max, Math.max(min, value));
+
+        const smoothStep = (start, end, value) => {
+          const t = clamp((value - start) / (end - start));
+          return t * t * (3 - 2 * t);
+        };
+
+        /* Reveal animation */
+        const revealElements = document.querySelectorAll(".reveal");
+        if ("IntersectionObserver" in window) {
+          const revealObserver = new IntersectionObserver(
+            (entries, observer) => {
+              entries.forEach((entry) => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add("in");
+                observer.unobserve(entry.target);
+              });
+            },
+            { threshold: 0.12, rootMargin: "0px 0px -50px" },
+          );
+
+          revealElements.forEach((element) => revealObserver.observe(element));
+        } else {
+          revealElements.forEach((element) => element.classList.add("in"));
+        }
+
+        /* Mobile menu */
+        const menuButton = document.querySelector(".menu-btn");
+        const mobilePanel = document.querySelector(".mobile-panel");
+
+        const closeMenu = () => {
+          menuButton.classList.remove("open");
+          menuButton.setAttribute("aria-expanded", "false");
+          mobilePanel.classList.remove("open");
+          mobilePanel.setAttribute("aria-hidden", "true");
+          document.body.classList.remove("menu-open");
+        };
+
+        menuButton.addEventListener("click", () => {
+          const isOpen = menuButton.classList.toggle("open");
+          menuButton.setAttribute("aria-expanded", String(isOpen));
+          mobilePanel.classList.toggle("open", isOpen);
+          mobilePanel.setAttribute("aria-hidden", String(!isOpen));
+          document.body.classList.toggle("menu-open", isOpen);
+        });
+
+        mobilePanel.querySelectorAll("a").forEach((link) => {
+          link.addEventListener("click", closeMenu);
+        });
+
+        /* Hero stack: one-by-one rise, tidy stack, then aligned scroll mosaic */
+        const heroSection = document.querySelector(".hero-stack");
+        const heroSticky = document.getElementById("heroSticky");
+        const heroGallery = document.getElementById("heroGallery");
+        const heroFinal = document.getElementById("heroFinal");
+        const heroCards = [...document.querySelectorAll(".hero-card")];
+        const heroProgressBar = document.getElementById("heroProgressBar");
+        const heroScrollNote = document.getElementById("heroScrollNote");
+        const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        let heroIntroComplete = reducedMotion;
+        let heroFrameRequested = false;
+
+        const desktopTargets = heroCards.map((card) => ({
+          x: Number(card.dataset.x),
+          y: Number(card.dataset.y),
+          rotation: Number(card.dataset.r),
+          scale: Number(card.dataset.s),
+          z: Number(card.dataset.z),
+        }));
+
+        const mobileTargets = [
+          { x: 17, y: 11 }, { x: 49, y: 10 }, { x: 82, y: 12 },
+          { x: 13, y: 31 }, { x: 43, y: 31 }, { x: 75, y: 32 },
+          { x: 12, y: 53 }, { x: 45, y: 53 }, { x: 82, y: 54 },
+          { x: 16, y: 78 }, { x: 50, y: 79 }, { x: 83, y: 80 },
+        ];
+
+        const stackState = (index, isMobile) => {
+          return {
+            x: 50,
+            y: isMobile ? 43 : 50,
+            rotation: ((index % 5) - 2) * (isMobile ? 0.45 : 0.5),
+            scale: (isMobile ? 0.9 : 0.94) - index * 0.0025,
+          };
+        };
+
+        const setCardPosition = (card, index, spread) => {
+          const isMobile = window.innerWidth <= 760;
+          const target = isMobile
+            ? { ...desktopTargets[index], ...mobileTargets[index], scale: 0.69 }
+            : desktopTargets[index];
+          const stack = stackState(index, isMobile);
+          const x = stack.x + (target.x - stack.x) * spread;
+          const y = stack.y + (target.y - stack.y) * spread;
+          const rotation = stack.rotation + (target.rotation - stack.rotation) * spread;
+          const scale = stack.scale + (target.scale - stack.scale) * spread;
+
+          card.style.left = `${x}%`;
+          card.style.top = `${y}%`;
+          card.style.zIndex = String(spread < 0.18 ? index + 1 : target.z);
+          card.style.transform = `translate(-50%, -50%) rotate(${rotation}deg) scale(${scale})`;
+          card.style.opacity = "1";
+        };
+
+        const updateHero = () => {
+          heroFrameRequested = false;
+          const navHeight = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--nav-height"));
+          const sectionTop = heroSection.offsetTop - navHeight;
+          const travel = Math.max(1, heroSection.offsetHeight - heroSticky.offsetHeight);
+          const progress = clamp((window.scrollY - sectionTop) / travel);
+          const spread = smoothStep(0.035, 0.61, progress);
+          const panel = smoothStep(0.52, 0.9, progress);
+
+          if (heroIntroComplete || progress > 0.012) {
+            heroCards.forEach((card, index) => setCardPosition(card, index, spread));
+          }
+
+          if (window.innerWidth <= 760) {
+            heroFinal.style.clipPath = `inset(${100 - panel * 100}% 0 0 0 round 22px)`;
+            heroFinal.style.transform = `translateY(${(1 - panel) * 24}px)`;
+          } else {
+            heroFinal.style.clipPath = `inset(0 0 0 ${100 - panel * 100}% round 28px)`;
+            heroFinal.style.transform = `translateX(${(1 - panel) * 28}px)`;
+          }
+
+          heroFinal.style.opacity = String(panel);
+          heroGallery.style.transform = `scale(${1 - panel * 0.012})`;
+          heroProgressBar.style.width = `${progress * 100}%`;
+          heroScrollNote.style.opacity = String(clamp(1 - progress * 4));
+        };
+
+        const requestHeroUpdate = () => {
+          if (heroFrameRequested) return;
+          heroFrameRequested = true;
+          requestAnimationFrame(updateHero);
+        };
+
+        const playHeroIntro = async () => {
+          if (reducedMotion || window.scrollY > heroSection.offsetTop + 30) {
+            heroIntroComplete = true;
+            updateHero();
+            return;
+          }
+
+          const isMobile = window.innerWidth <= 760;
+          heroCards.forEach((card, index) => {
+            const stack = stackState(index, isMobile);
+            card.style.left = `${stack.x}%`;
+            card.style.top = `${stack.y}%`;
+            card.style.zIndex = String(index + 1);
+            card.style.opacity = "1";
+
+            card.animate(
+              [
+                {
+                  transform: `translate(-50%, calc(-50% + 112vh)) rotate(${stack.rotation - 9}deg) scale(0.72)`,
+                  opacity: 0,
+                },
+                {
+                  offset: 0.82,
+                  transform: `translate(-50%, calc(-50% - 9px)) rotate(${stack.rotation + 0.5}deg) scale(${stack.scale + 0.012})`,
+                  opacity: 1,
+                },
+                {
+                  transform: `translate(-50%, -50%) rotate(${stack.rotation}deg) scale(${stack.scale})`,
+                  opacity: 1,
+                },
+              ],
+              {
+                duration: 800,
+                delay: index * 145,
+                easing: "cubic-bezier(.18,.78,.22,1)",
+                fill: "forwards",
+              },
+            );
+          });
+
+          await new Promise((resolve) =>
+            setTimeout(resolve, 800 + (heroCards.length - 1) * 145 + 120),
+          );
+
+          heroIntroComplete = true;
+          updateHero();
+        };
+
+        window.addEventListener("scroll", requestHeroUpdate, { passive: true });
+        window.addEventListener("resize", requestHeroUpdate);
+        playHeroIntro();
+        updateHero();
+
+        /* Section 4: tabbed seamless infinite image carousels */
+        const tvConsole = document.getElementById("tvConsole");
+        const tvButtons = [...document.querySelectorAll(".tv-index button")];
+        const tvPanels = [...document.querySelectorAll(".tv-panel")];
+        let tvTimer = null;
+
+        const updateTvDots = (panel, logicalIndex) => {
+          panel.querySelectorAll(".tv-dot").forEach((dot, index) => {
+            dot.classList.toggle("active", index === logicalIndex);
+          });
+        };
+
+        const setTvTrack = (panel, trackIndex, animate = true) => {
+          const track = panel.querySelector(".tv-slides");
+          if (!animate) track.classList.add("no-transition");
+          panel.dataset.trackIndex = String(trackIndex);
+          panel.dataset.animating = animate ? "true" : "false";
+          track.style.transform = `translate3d(-${trackIndex * 100}%, 0, 0)`;
+          if (!animate) {
+            requestAnimationFrame(() => requestAnimationFrame(() => {
+              track.classList.remove("no-transition");
+              panel.dataset.animating = "false";
+            }));
+          }
+        };
+
+        const initialiseTvPanel = (panel) => {
+          const track = panel.querySelector(".tv-slides");
+          const originals = [...track.children];
+          const count = originals.length;
+          if (!count) return;
+
+          panel.dataset.slideCount = String(count);
+          const firstClone = originals[0].cloneNode(true);
+          const lastClone = originals[count - 1].cloneNode(true);
+          firstClone.classList.add("tv-clone");
+          lastClone.classList.add("tv-clone");
+          firstClone.setAttribute("aria-hidden", "true");
+          lastClone.setAttribute("aria-hidden", "true");
+          track.prepend(lastClone);
+          track.append(firstClone);
+          panel.dataset.index = "0";
+          panel.dataset.animating = "false";
+          setTvTrack(panel, 1, false);
+
+          const dotContainer = panel.querySelector(".tv-dots");
+          dotContainer.innerHTML = "";
+          originals.forEach((_, index) => {
+            const dot = document.createElement("button");
+            dot.type = "button";
+            dot.className = `tv-dot${index === 0 ? " active" : ""}`;
+            dot.setAttribute("aria-label", `Go to image ${index + 1}`);
+            dot.addEventListener("click", () => {
+              panel.dataset.index = String(index);
+              updateTvDots(panel, index);
+              setTvTrack(panel, index + 1, true);
+              restartTvAutoplay();
+            });
+            dotContainer.appendChild(dot);
+          });
+
+          track.addEventListener("transitionend", (event) => {
+            if (event.propertyName !== "transform") return;
+            const currentTrackIndex = Number(panel.dataset.trackIndex || 1);
+            if (currentTrackIndex === 0) {
+              setTvTrack(panel, count, false);
+            } else if (currentTrackIndex === count + 1) {
+              setTvTrack(panel, 1, false);
+            } else {
+              panel.dataset.animating = "false";
+            }
+          });
+        };
+
+        const activeTvPanel = () => document.querySelector(".tv-panel.active");
+
+        const moveTvSlide = (panel, direction) => {
+          if (!panel || panel.dataset.animating === "true") return;
+          const count = Number(panel.dataset.slideCount || 0);
+          if (!count) return;
+          let currentTrackIndex = Number(panel.dataset.trackIndex || 1);
+          if (currentTrackIndex < 0 || currentTrackIndex > count + 1) {
+            currentTrackIndex = 1;
+            setTvTrack(panel, 1, false);
+          }
+          const nextTrackIndex = currentTrackIndex + direction;
+          const logicalIndex = (nextTrackIndex - 1 + count) % count;
+          panel.dataset.index = String(logicalIndex);
+          updateTvDots(panel, logicalIndex);
+          setTvTrack(panel, nextTrackIndex, true);
+        };
+
+        const changeTvSlide = (direction) => moveTvSlide(activeTvPanel(), direction);
+
+        const restartTvAutoplay = () => {
+          window.clearInterval(tvTimer);
+          tvTimer = window.setInterval(() => changeTvSlide(1), 3000);
+        };
+
+        document.querySelectorAll(".tv-slide img").forEach((image) => {
+          const markMissing = () => image.classList.add("is-missing");
+          image.addEventListener("error", markMissing, { once: true });
+          if (image.complete && image.naturalWidth === 0) markMissing();
+          const preload = new Image();
+          preload.onerror = markMissing;
+          preload.src = image.currentSrc || image.src;
+        });
+
+        tvPanels.forEach((panel) => {
+          initialiseTvPanel(panel);
+          panel.querySelector(".tv-prev").addEventListener("click", () => {
+            moveTvSlide(panel, -1);
+            restartTvAutoplay();
+          });
+          panel.querySelector(".tv-next").addEventListener("click", () => {
+            moveTvSlide(panel, 1);
+            restartTvAutoplay();
+          });
+        });
+
+        tvButtons.forEach((button) => {
+          button.addEventListener("click", () => {
+            tvButtons.forEach((item) => {
+              item.classList.remove("active");
+              item.setAttribute("aria-selected", "false");
+            });
+            tvPanels.forEach((panel) => panel.classList.remove("active"));
+
+            button.classList.add("active");
+            button.setAttribute("aria-selected", "true");
+            const nextPanel = document.getElementById(button.dataset.tv);
+            nextPanel.classList.add("active");
+            restartTvAutoplay();
+          });
+        });
+
+        tvConsole.addEventListener("mouseenter", () => window.clearInterval(tvTimer));
+        tvConsole.addEventListener("mouseleave", restartTvAutoplay);
+        restartTvAutoplay();
+
+        /* Section 5 event tabs */
+        document.querySelectorAll(".event-switch button").forEach((button) => {
+          button.addEventListener("click", () => {
+            document
+              .querySelectorAll(".event-switch button")
+              .forEach((item) => item.classList.remove("active"));
+            document
+              .querySelectorAll(".event-panel")
+              .forEach((panel) => panel.classList.remove("active"));
+
+            button.classList.add("active");
+            document.getElementById(button.dataset.event).classList.add("active");
+          });
+        });
+
+        /* FAQ accordion */
+        document.querySelectorAll(".faq-question").forEach((button) => {
+          button.addEventListener("click", () => {
+            const item = button.closest(".faq-item");
+            const wasOpen = item.classList.contains("open");
+
+            document.querySelectorAll(".faq-item").forEach((faqItem) => {
+              faqItem.classList.remove("open");
+              faqItem
+                .querySelector(".faq-question")
+                .setAttribute("aria-expanded", "false");
+            });
+
+            if (!wasOpen) {
+              item.classList.add("open");
+              button.setAttribute("aria-expanded", "true");
+            }
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>
