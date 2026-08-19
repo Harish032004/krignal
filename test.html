@@ -11146,7 +11146,7 @@ HERO LEFT BOX — COMPACT BADGE AND LARGE TEXT UPDATE
         display: block !important;
         position: absolute !important;
         left: 50% !important;
-        top: 50% !important;
+        top: 0 !important;
         width: clamp(156px, 16vw, 268px) !important;
         aspect-ratio: 0.92 / 1 !important;
         border: 1px solid rgba(181, 150, 62, 0.3) !important;
@@ -11356,13 +11356,11 @@ HERO LEFT BOX — COMPACT BADGE AND LARGE TEXT UPDATE
 
         const paintCards = (progress) => {
           const mobile = window.innerWidth <= 760;
-          const vh = sticky.clientHeight;
           const visibleCount = mobile ? Math.min(cards.length, 10) : cards.length;
           const half = (visibleCount - 1) / 2;
-          const cycle = progress * (mobile ? visibleCount * 1.05 : visibleCount * 1.35);
-          const stepX = mobile ? 18.5 : 12.2;
-          const baseY = mobile ? vh * 0.56 : vh * 0.53;
-          const curve = mobile ? 24 : 30;
+          const cycle = half + progress * (mobile ? visibleCount * 1.05 : visibleCount * 1.35);
+          const stepX = mobile ? 18.5 : 12.4;
+          const baseY = mobile ? 132 : 164;
           const featuredScale = mobile ? 1.22 : 1.56;
           const edgeScale = mobile ? 0.8 : 0.84;
 
@@ -11384,12 +11382,12 @@ HERO LEFT BOX — COMPACT BADGE AND LARGE TEXT UPDATE
             const side = clamp(distance / Math.max(half, 1));
             const featured = distance < 0.42;
             const x = rel * stepX;
-            const y = baseY - vh * 0.22 + Math.pow(distance, 1.58) * curve;
-            const rotate = rel * (mobile ? 7.5 : 5.6);
+            const y = baseY;
+            const rotate = rel * (mobile ? 5.2 : 4.2);
             const scale = featured
               ? featuredScale - distance * 0.22
               : mix(featuredScale, edgeScale, side);
-            const opacity = mix(1, mobile ? 0.52 : 0.38, side);
+            const opacity = mix(1, mobile ? 0.58 : 0.44, side);
             const zIndex = Math.round(220 - distance * 18);
 
             card.classList.toggle("is-featured", featured);
@@ -11430,7 +11428,9 @@ HERO LEFT BOX — COMPACT BADGE AND LARGE TEXT UPDATE
 
         window.addEventListener("scroll", requestPaint, { passive: true });
         window.addEventListener("resize", requestPaint, { passive: true });
-        requestPaint();
+        window.addEventListener("load", requestPaint, { once: true });
+        window.addEventListener("pageshow", requestPaint, { passive: true });
+        update();
       })();
     </script>
   </body>
